@@ -1,0 +1,41 @@
+# Docker Compose para probar en Docker Desktop (Windows)
+# Nota: el juzgamiento de codigo NO funciona en Windows (requiere cgroups de Linux)
+# Pero la interfaz web (admin, equipos, problemas) funciona normal.
+#
+# Levantar con: docker compose -f docker-compose.windows.yml up -d
+# Detener con:  docker compose -f docker-compose.windows.yml down
+
+services:
+  mariadb:
+    container_name: ups-judge-db
+    image: docker.io/mariadb
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=Ups#Jdg2025!Root
+      - MYSQL_USER=upsjudge
+      - MYSQL_PASSWORD=Ups#Jdg2025!App
+      - MYSQL_DATABASE=upsjudge
+    command: --max-connections=1000 --max-allowed-packet=512M --innodb_snapshot_isolation=OFF
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  domjudge:
+    container_name: ups-judge-app
+    image: astlimbark/ups-judge:latest
+    restart: unless-stopped
+    hostname: ups-judge
+    ports:
+      - 12345:80
+    environment:
+      - CONTAINER_TIMEZONE=America/La_Paz
+      - MYSQL_HOST=mariadb
+      - MYSQL_USER=upsjudge
+      - MYSQL_PASSWORD=Ups#Jdg2025!App
+      - MYSQL_DATABASE=upsjudge
+      - MYSQL_ROOT_PASSWORD=Ups#Jdg2025!Root
+      - DJ_DB_INSTALL_BARE=1
+    depends_on:
+      - mariadb
+
+volumes:
+  mariadb_data:
