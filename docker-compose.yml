@@ -24,7 +24,13 @@ services:
     privileged: true
     cgroup: host
     environment:
-      - TZ=America/La_Paz
+      - CONTAINER_TIMEZONE=America/La_Paz
+      - MYSQL_HOST=mariadb
+      - MYSQL_USER=upsjudge
+      - MYSQL_PASSWORD=Ups#Jdg2025!App
+      - MYSQL_DATABASE=upsjudge
+      - MYSQL_ROOT_PASSWORD=Ups#Jdg2025!Root
+      - DJ_DB_INSTALL_BARE=1
     depends_on:
       - mariadb
 
