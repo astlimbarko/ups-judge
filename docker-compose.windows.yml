@@ -11,9 +11,9 @@ services:
     image: docker.io/mariadb
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD=Ups#Jdg2025!Root
+      - MYSQL_ROOT_PASSWORD=UpsJdg2025Root
       - MYSQL_USER=upsjudge
-      - MYSQL_PASSWORD=Ups#Jdg2025!App
+      - MYSQL_PASSWORD=UpsJdg2025App
       - MYSQL_DATABASE=upsjudge
     command: --max-connections=1000 --max-allowed-packet=512M --innodb_snapshot_isolation=OFF
     volumes:
@@ -30,9 +30,9 @@ services:
       - CONTAINER_TIMEZONE=America/La_Paz
       - MYSQL_HOST=mariadb
       - MYSQL_USER=upsjudge
-      - MYSQL_PASSWORD=Ups#Jdg2025!App
+      - MYSQL_PASSWORD=UpsJdg2025App
       - MYSQL_DATABASE=upsjudge
-      - MYSQL_ROOT_PASSWORD=Ups#Jdg2025!Root
+      - MYSQL_ROOT_PASSWORD=UpsJdg2025Root
       - DJ_DB_INSTALL_BARE=1
     depends_on:
       - mariadb
