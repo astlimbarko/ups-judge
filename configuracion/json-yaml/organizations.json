@@ -1,0 +1,20 @@
+[
+  {
+    "id": "UTEPSA",
+    "name": "UTEPSA",
+    "formal_name": "Universidad Tecnologica Privada de Santa Cruz",
+    "country": "BOL"
+  },
+  {
+    "id": "UDABOL",
+    "name": "UDABOL",
+    "formal_name": "Universidad de Aquino Bolivia",
+    "country": "BOL"
+  },
+  {
+    "id": "EMI",
+    "name": "EMI",
+    "formal_name": "Escuela Militar de Ingenieria",
+    "country": "BOL"
+  }
+]

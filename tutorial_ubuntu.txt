@@ -1,0 +1,89 @@
+```text
+# VER IP
+hostname -I
+
+# VER SSH
+sudo systemctl status ssh
+
+# INSTALAR SSH
+sudo apt update
+sudo apt install openssh-server -y
+
+# CONECTARSE POR SSH DESDE OTRA PC
+ssh chalo@192.168.42.128
+
+# ACTUALIZAR UBUNTU
+sudo apt update && sudo apt upgrade -y
+
+# INSTALAR GIT
+sudo apt install git -y
+
+# VERIFICAR GIT
+git --version
+
+# INSTALAR DOCKER
+sudo apt install docker.io -y
+
+# VERIFICAR DOCKER
+docker --version
+
+# ACTIVAR DOCKER
+sudo systemctl enable docker
+sudo systemctl start docker
+
+# VER ESTADO DOCKER
+sudo systemctl status docker
+
+# INSTALAR DOCKER COMPOSE
+sudo apt install docker-compose -y
+
+# VERIFICAR DOCKER COMPOSE
+docker-compose --version
+
+# CREAR CARPETA PROYECTOS
+mkdir ~/proyectos
+cd ~/proyectos
+
+# CLONAR REPOSITORIO
+git clone https://github.com/astlimbarko/ups-judge.git
+
+# ENTRAR AL PROYECTO
+cd ups-judge
+
+# EDITAR DOCKER COMPOSE
+nano docker-compose.yml
+
+# ELIMINAR ESTA LINEA SI EXISTE
+cgroup:
+# O
+cgroup: host
+
+# GUARDAR EN NANO
+CTRL + O
+ENTER
+CTRL + X
+
+# LEVANTAR SERVER
+docker-compose up -d
+
+# VER CONTENEDORES
+docker ps
+
+# VER LOGS
+docker-compose logs -f
+
+# APAGAR SERVER
+docker-compose down
+
+# REINICIAR SERVER
+docker-compose restart
+
+# RECONSTRUIR IMAGENES
+docker-compose up --build -d
+
+# ACTUALIZAR REPOSITORIO
+git pull
+
+# VOLVER A LEVANTAR
+docker-compose up --build -d
+```

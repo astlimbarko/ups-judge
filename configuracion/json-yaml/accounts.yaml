@@ -1,0 +1,41 @@
+- id: team01
+  username: team01
+  password: byteforce
+  type: team
+  team_id: "1"
+  name: ByteForce
+
+- id: team02
+  username: team02
+  password: nullpointers
+  type: team
+  team_id: "2"
+  name: NullPointers
+
+- id: team03
+  username: team03
+  password: stackoverflow
+  type: team
+  team_id: "3"
+  name: StackOverflow
+
+- id: team04
+  username: team04
+  password: runtimeterror
+  type: team
+  team_id: "4"
+  name: Runtime Terror
+
+- id: team05
+  username: team05
+  password: segfault
+  type: team
+  team_id: "5"
+  name: Segfault
+
+- id: team06
+  username: team06
+  password: ctrl+cctrl+v
+  type: team
+  team_id: "6"
+  name: Ctrl+C Ctrl+V

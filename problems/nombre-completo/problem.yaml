@@ -1,0 +1,6 @@
+name: Nombre Completo
+color: Black
+rgb: '#000000'
+limits:
+  time_limit: 1
+  memory: 256

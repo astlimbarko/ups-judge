@@ -1,0 +1,6 @@
+name: Echo
+color: Blue
+rgb: '#0000FF'
+limits:
+  time_limit: 1
+  memory: 256

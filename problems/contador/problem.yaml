@@ -1,0 +1,6 @@
+name: Contador
+color: Light Blue
+rgb: '#00BFFF'
+limits:
+  time_limit: 1
+  memory: 256

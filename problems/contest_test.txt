@@ -1,0 +1,133 @@
+Ejercicios básicos para un Test Contest
+1. Hola mundo
+Enunciado
+
+Lee un número entero.
+Sin importar el valor, imprime:
+
+Hola Mundo
+Entrada
+1
+Salida
+Hola mundo
+2. Echo
+
+Muy usado para probar input/output.
+
+Enunciado
+
+Lee una palabra y muéstrala exactamente igual.
+
+Entrada
+hola
+Salida
+hola
+3. Suma Simple
+Enunciado
+
+Lee dos números enteros y muestra su suma.
+
+Entrada
+3 5
+Salida
+8
+4. Doble del Número
+Enunciado
+
+Lee un número entero e imprime su doble.
+
+Entrada
+7
+Salida
+14
+5. Área de Rectángulo
+Enunciado
+
+Dados el ancho y alto de un rectángulo, calcula su área.
+
+Entrada
+4 6
+Salida
+24
+6. Par o Impar
+Enunciado
+
+Lee un número entero.
+Imprime par si es divisible entre 2, o impar en caso contrario.
+
+Entrada
+9
+Salida
+impar
+7. Mayor de Dos Números
+Enunciado
+
+Lee dos enteros e imprime el mayor.
+
+Entrada
+10 3
+Salida
+10
+8. Contador
+Enunciado
+
+Lee un número N e imprime los números del 1 al N.
+
+Entrada
+5
+Salida
+1
+2
+3
+4
+5
+9. Tabla de Multiplicar
+Enunciado
+
+Lee un número entero N e imprime su tabla del 1 al 10.
+
+Entrada
+3
+Salida
+3
+6
+9
+12
+15
+18
+21
+24
+27
+30
+10. Nombre Completo
+Enunciado
+
+Lee un nombre y un apellido e imprímelos juntos.
+
+Entrada
+Juan Perez
+Salida
+Hola Juan Perez
+Ideas útiles para testear DOMjudge
+
+Para un test contest real, te recomiendo incluir:
+
+Tipo	Objetivo
+Output fijo	Verificar compilación
+Echo	Verificar lectura
+Matemática simple	Verificar operaciones
+If/Else	Verificar lógica
+Bucles	Verificar iteraciones
+Strings	Verificar texto
+Múltiples casos	Verificar parsing
+Orden recomendado del contest
+Hola Mundo
+Echo
+Suma Simple
+Doble del Número
+Par o Impar
+Mayor de Dos
+Contador
+Tabla de Multiplicar
+
+Así los participantes sienten progresión.

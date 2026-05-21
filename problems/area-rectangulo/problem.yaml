@@ -1,0 +1,6 @@
+name: Area de Rectangulo
+color: Orange
+rgb: '#FF8C00'
+limits:
+  time_limit: 1
+  memory: 256

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "ByteForce",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "2",
+    "name": "NullPointers",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "3",
+    "name": "StackOverflow",
+    "group_ids": ["1"],
+    "organization_id": "UDABOL"
+  },
+  {
+    "id": "4",
+    "name": "Runtime Terror",
+    "group_ids": ["1"],
+    "organization_id": "UDABOL"
+  },
+  {
+    "id": "5",
+    "name": "Segfault",
+    "group_ids": ["1"],
+    "organization_id": "EMI"
+  },
+  {
+    "id": "6",
+    "name": "Ctrl+C Ctrl+V",
+    "group_ids": ["1"],
+    "organization_id": "EMI"
+  }
+]

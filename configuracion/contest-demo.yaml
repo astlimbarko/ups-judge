@@ -1,0 +1,17 @@
+id: testing-ups-2026
+
+name: "UPC Judge UTEPSA - test"
+
+short_name: "test1"
+
+start_time: "2026-05-19T13:00:00-04:00"
+
+duration: "720:00:00"
+
+scoreboard_freeze_duration: "0:00:00"
+
+penalty_time: 20
+
+activate_time: "2026-05-19T13:00:00-04:00"
+
+deactivate_time: "2026-06-20T13:00:00-04:00"
