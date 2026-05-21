@@ -22,7 +22,6 @@ services:
     ports:
       - 80:80
     privileged: true
-    cgroup: host
     environment:
       - CONTAINER_TIMEZONE=America/La_Paz
       - MYSQL_HOST=mariadb
@@ -33,6 +32,20 @@ services:
       - DJ_DB_INSTALL_BARE=1
     depends_on:
       - mariadb
+
+  judgehost:
+    container_name: ups-judge-judgehost
+    image: domjudge/judgehost:latest
+    restart: unless-stopped
+    privileged: true
+    hostname: judgedaemon
+    environment:
+      - CONTAINER_TIMEZONE=America/La_Paz
+      - DAEMON_ID=0
+      - JUDGEDAEMON_PASSWORD=DpUR9xKqBAtvR75GDtrH00hwor2NPOsT
+      - DOMSERVER_BASEURL=http://domjudge/
+    depends_on:
+      - domjudge
 
 volumes:
   mariadb_data:
