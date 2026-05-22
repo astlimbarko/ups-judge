@@ -5,7 +5,7 @@
 API_URL="http://192.168.42.128/api/v4"
 CID="testing-ups-2026"
 USER="admin"
-PASS="EucoT8kjJUe37vA"
+PASS="niU0CCzcD6H6Atwy"
 
 # Carpeta donde estan los ZIPs
 ZIP_DIR="./zips"

@@ -19,6 +19,7 @@ services:
     hostname: ups-judge
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup
+      - domjudge_etc:/opt/domjudge/domserver/etc   
     ports:
       - 80:80
     privileged: true
@@ -42,10 +43,11 @@ services:
     environment:
       - CONTAINER_TIMEZONE=America/La_Paz
       - DAEMON_ID=0
-      - JUDGEDAEMON_PASSWORD=5/5S3THXxz43vAkxAvQZUVQFx1q9QUb5
+      - JUDGEDAEMON_PASSWORD=judgepass
       - DOMSERVER_BASEURL=http://domjudge/
     depends_on:
       - domjudge
 
 volumes:
   mariadb_data:
+  domjudge_etc:
