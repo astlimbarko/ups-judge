@@ -1,14 +1,21 @@
 services:
+
   mariadb:
     container_name: ups-judge-db
     image: docker.io/mariadb
     restart: unless-stopped
+
     environment:
       - MYSQL_ROOT_PASSWORD=UpsJdg2025Root
       - MYSQL_USER=upsjudge
       - MYSQL_PASSWORD=UpsJdg2025App
       - MYSQL_DATABASE=upsjudge
-    command: --max-connections=1000 --max-allowed-packet=512M --innodb_snapshot_isolation=OFF
+
+    command: >
+      --max-connections=1000
+      --max-allowed-packet=512M
+      --innodb_snapshot_isolation=OFF
+
     volumes:
       - mariadb_data:/var/lib/mysql
 
@@ -16,20 +23,28 @@ services:
     container_name: ups-judge-app
     image: astlimbark/ups-judge:latest
     restart: unless-stopped
+
     hostname: domjudge
+
+    privileged: true
+
     volumes:
       - domjudge_etc:/opt/domjudge/domserver/etc
+
     ports:
       - "80:80"
-    privileged: true
+
     environment:
       - CONTAINER_TIMEZONE=America/La_Paz
+
       - MYSQL_HOST=mariadb
       - MYSQL_USER=upsjudge
       - MYSQL_PASSWORD=UpsJdg2025App
       - MYSQL_DATABASE=upsjudge
       - MYSQL_ROOT_PASSWORD=UpsJdg2025Root
+
       - DJ_DB_INSTALL_BARE=1
+
     depends_on:
       - mariadb
 
@@ -37,16 +52,36 @@ services:
     container_name: ups-judge-judgehost
     image: domjudge/judgehost:latest
     restart: unless-stopped
-    privileged: true
+
     hostname: judgedaemon
+
+    privileged: true
+
+    # CRÍTICO para cgroup v2 + Docker moderno
+    cgroupns_mode: host
+
+    # IMPORTANTE para runtime interno
+    tmpfs:
+      - /run
+      - /run/lock
+
     volumes:
+      # acceso real al árbol de cgroups
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
+
     environment:
       - CONTAINER_TIMEZONE=America/La_Paz
+
       - DAEMON_ID=0
+
       - JUDGEDAEMON_PASSWORD=zyjH+VAQTR4Bw+YP7WiCctPsPMcbfGAS
-      - DOMSERVER_BASEURL=http://ups-judge-app/
+
+      # usar hostname interno del servicio
+      - DOMSERVER_BASEURL=http://domjudge/
+
+      # evita problemas de memory controller
       - CGROUP_MEMORY_LIMIT=0
+
     depends_on:
       - domjudge
 
