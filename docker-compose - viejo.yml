@@ -18,9 +18,10 @@ services:
     restart: unless-stopped
     hostname: ups-judge
     volumes:
-      - domjudge_etc:/opt/domjudge/domserver/etc
+      - /sys/fs/cgroup:/sys/fs/cgroup
+      - domjudge_etc:/opt/domjudge/domserver/etc   
     ports:
-      - "80:80"
+      - 80:80
     privileged: true
     environment:
       - CONTAINER_TIMEZONE=America/La_Paz
@@ -43,7 +44,7 @@ services:
       - CONTAINER_TIMEZONE=America/La_Paz
       - DAEMON_ID=0
       - JUDGEDAEMON_PASSWORD=judgepass
-      - DOMSERVER_BASEURL=http://ups-judge-app/
+      - DOMSERVER_BASEURL=http://domjudge/
     depends_on:
       - domjudge
 
