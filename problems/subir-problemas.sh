@@ -2,10 +2,10 @@
 # Script para subir todos los problemas al contest via API
 # Ejecutar desde Ubuntu Server donde corre DOMjudge
 
-API_URL="http://192.168.42.128/api/v4"
+API_URL="http://192.168.42.130/api/v4"
 CID="testing-ups-2026"
 USER="admin"
-PASS="niU0CCzcD6H6Atwy"
+PASS="5Vzz6HPmTMFD7ZP0"
 
 # Carpeta donde estan los ZIPs
 ZIP_DIR="./zips"

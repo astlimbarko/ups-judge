@@ -1,99 +1,213 @@
-```text
+# =========================================
 # VER IP
+# =========================================
 hostname -I
 
+# =========================================
 # VER SSH
+# =========================================
 sudo systemctl status ssh
 
+# =========================================
 # INSTALAR SSH
+# =========================================
 sudo apt update
 sudo apt install openssh-server -y
 
+# =========================================
 # CONECTARSE POR SSH DESDE OTRA PC
+# =========================================
 ssh chalo@192.168.42.128
 
+# =========================================
 # ACTUALIZAR UBUNTU
+# =========================================
 sudo apt update && sudo apt upgrade -y
 
+# =========================================
 # INSTALAR GIT
+# =========================================
 sudo apt install git -y
 
+# =========================================
 # VERIFICAR GIT
+# =========================================
 git --version
 
+# =========================================
 # INSTALAR DOCKER
+# =========================================
 sudo apt install docker.io -y
 
+# =========================================
 # VERIFICAR DOCKER
+# =========================================
 docker --version
 
+# =========================================
 # ACTIVAR DOCKER
+# =========================================
 sudo systemctl enable docker
 sudo systemctl start docker
 
+# =========================================
 # VER ESTADO DOCKER
+# =========================================
 sudo systemctl status docker
 
+# =========================================
 # INSTALAR DOCKER COMPOSE
+# =========================================
 sudo apt install docker-compose -y
 
+# =========================================
 # VERIFICAR DOCKER COMPOSE
+# =========================================
 docker-compose --version
 
+# =========================================
+# ACTIVAR CGROUP V2 + MEMORY CONTROL
+# =========================================
+sudo nano /etc/default/grub
+
+# CAMBIAR ESTA LINEA:
+# GRUB_CMDLINE_LINUX_DEFAULT=""
+
+# POR ESTA:
+GRUB_CMDLINE_LINUX_DEFAULT="systemd.unified_cgroup_hierarchy=1 cgroup_enable=memory"
+
+# =========================================
+# ACTUALIZAR GRUB
+# =========================================
+sudo update-grub
+
+# =========================================
+# REINICIAR SERVIDOR
+# =========================================
+sudo reboot
+
+# =========================================
+# VERIFICAR CGROUP V2
+# =========================================
+docker info | grep -i cgroup
+
+# DEBE MOSTRAR:
+# Cgroup Driver: systemd
+# Cgroup Version: 2
+
+# =========================================
+# VERIFICAR KERNEL PARAMETERS
+# =========================================
+cat /proc/cmdline
+
+# DEBE MOSTRAR:
+# systemd.unified_cgroup_hierarchy=1
+# cgroup_enable=memory
+
+# =========================================
+# VERIFICAR DELEGATE
+# =========================================
+systemctl show --property=Delegate docker
+
+# DEBE MOSTRAR:
+# Delegate=yes
+
+# =========================================
 # CREAR CARPETA PROYECTOS
+# =========================================
 mkdir ~/proyectos
 cd ~/proyectos
 
+# =========================================
 # CLONAR REPOSITORIO
+# =========================================
 git clone https://github.com/astlimbarko/ups-judge.git
 
+# =========================================
 # ENTRAR AL PROYECTO
+# =========================================
 cd ups-judge
 
+# =========================================
 # EDITAR DOCKER COMPOSE
+# =========================================
 nano docker-compose.yml
 
-# ELIMINAR ESTA LINEA SI EXISTE
-cgroup:
-# O
-cgroup: host
-
-# GUARDAR EN NANO
-CTRL + O
-ENTER
-CTRL + X
-
+# =========================================
 # LEVANTAR SERVER
-docker-compose up -d
+# =========================================
+docker compose up -d
 
+# =========================================
 # VER CONTENEDORES
+# =========================================
 docker ps
 
+# =========================================
 # VER LOGS
-docker-compose logs -f
+# =========================================
+docker compose logs -f
 
+# =========================================
+# VER LOGS SOLO JUDGEHOST
+# =========================================
+docker logs -f ups-judge-judgehost
+
+# =========================================
 # APAGAR SERVER
-docker-compose down
+# =========================================
+docker compose down
 
+# =========================================
 # REINICIAR SERVER
-docker-compose restart
+# =========================================
+docker compose restart
 
+# =========================================
+# REINICIAR SOLO JUDGEHOST
+# =========================================
+docker restart ups-judge-judgehost
+
+# =========================================
 # RECONSTRUIR IMAGENES
-docker-compose up --build -d
+# =========================================
+docker compose up --build -d
 
+# =========================================
 # ACTUALIZAR REPOSITORIO
+# =========================================
 git pull
 
+# =========================================
 # VOLVER A LEVANTAR
-docker-compose up --build -d
-```
+# =========================================
+docker compose up --build -d
+
+# =========================================
+# VERIFICAR QUE JUDGEHOST FUNCIONA
+# =========================================
+docker logs ups-judge-judgehost --tail 100
+
+# DEBE MOSTRAR:
+# [ok] cgroups set up
+# Judge started
+# No submissions in queue
+
+# =========================================
+# ENTRAR AL JUDGEHOST
+# =========================================
+docker exec -it ups-judge-judgehost bash
+
+# =========================================
+# VERIFICAR CGROUP DENTRO DEL CONTAINER
+# =========================================
+cat /proc/self/cgroup
+
+# =========================================
+# VERIFICAR MONTAJE CGROUP
+# =========================================
+mount | grep cgroup
 
 
 
-nuevos cambios para documentar:
-Editar GRUB para ....
-sudo nano /etc/default/grub
-quitamos esto:
-GRUB_CMDLINE_LINUX_DEFAULT=""
-y introdujimos esto:
-GRUB_CMDLINE_LINUX_DEFAULT="systemd.unified_cgroup_hierarchy=1 cgroup_enable=memory"
+5Vzz6HPmTMFD7ZP0
