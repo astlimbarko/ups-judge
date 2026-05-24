@@ -1,6 +1,0 @@
-name: Par o Impar
-color: Purple
-rgb: '#800080'
-limits:
-  time_limit: 1
-  memory: 256

@@ -1,0 +1,4 @@
+name: Doble del Numero
+limits:
+  time_limit: 1
+  memory: 256

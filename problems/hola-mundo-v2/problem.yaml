@@ -1,6 +1,0 @@
-name: Hola Mundo
-color: Red
-rgb: '#FF0000'
-limits:
-  time_limit: 1
-  memory: 256

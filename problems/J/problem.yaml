@@ -1,0 +1,4 @@
+name: Tabla de Multiplicar
+limits:
+  time_limit: 1
+  memory: 256

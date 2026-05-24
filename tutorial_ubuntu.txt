@@ -208,6 +208,39 @@ cat /proc/self/cgroup
 # =========================================
 mount | grep cgroup
 
+# =========================================
+# DAR PERMISOS A SCRIPTS .SH
+# =========================================
+chmod +x archivo.sh
 
+# EJEMPLO
+chmod +x subir-problemas.sh
+
+# EJECUTAR SCRIPT
+./subir-problemas.sh
+
+
+
+# =========================================
+# VER PASSWORD INICIAL DE ADMIN Y JUDGEHOST
+# =========================================
+docker logs ups-judge-app --tail 300 | grep -E "Initial admin password|Initial judgehost password"
+
+# =========================================
+# VER PASSWORD REST API DIRECTAMENTE
+# =========================================
+docker exec -it ups-judge-app bash
+
+cat /opt/domjudge/domserver/etc/restapi.secret
+
+# =========================================
+# VERIFICAR SI JUDGEHOST ESTA CONECTADO
+# =========================================
+docker logs ups-judge-judgehost --tail 100
+
+# =========================================
+# VER TODOS LOS LOGS DEL SERVER
+# =========================================
+docker compose logs -f
 
 5Vzz6HPmTMFD7ZP0

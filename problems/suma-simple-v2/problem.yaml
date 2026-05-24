@@ -1,6 +1,0 @@
-name: Suma Simple
-color: Green
-rgb: '#008000'
-limits:
-  time_limit: 1
-  memory: 256

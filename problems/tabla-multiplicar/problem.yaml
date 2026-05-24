@@ -1,6 +1,0 @@
-name: Tabla de Multiplicar
-color: Brown
-rgb: '#8B4513'
-limits:
-  time_limit: 1
-  memory: 256
