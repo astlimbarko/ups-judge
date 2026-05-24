@@ -16,7 +16,7 @@ services:
     container_name: ups-judge-app
     image: astlimbark/ups-judge:latest
     restart: unless-stopped
-    hostname: ups-judge
+    hostname: domjudge
     volumes:
       - domjudge_etc:/opt/domjudge/domserver/etc
     ports:
@@ -42,8 +42,8 @@ services:
     environment:
       - CONTAINER_TIMEZONE=America/La_Paz
       - DAEMON_ID=0
-      - JUDGEDAEMON_PASSWORD=judgepass
-      - DOMSERVER_BASEURL=http://ups-judge-app/
+      - JUDGEDAEMON_PASSWORD=zyjH+VAQTR4Bw+YP7WiCctPsPMcbfGAS
+      - DOMSERVER_BASEURL=http://domjudge/
       - DOMJUDGE_CREATE_CGROUPS=0
     depends_on:
       - domjudge
