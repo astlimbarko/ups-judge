@@ -53,12 +53,14 @@ services:
     image: domjudge/judgehost:latest
     restart: unless-stopped
 
+    init: true
+
     hostname: judgedaemon
 
     privileged: true
 
-    # CRÍTICO para cgroup v2 + Docker moderno
-    cgroupns_mode: host
+    # equivalente moderno
+    cgroup: host
 
     # IMPORTANTE para runtime interno
     tmpfs:
@@ -71,15 +73,9 @@ services:
 
     environment:
       - CONTAINER_TIMEZONE=America/La_Paz
-
       - DAEMON_ID=0
-
       - JUDGEDAEMON_PASSWORD=zyjH+VAQTR4Bw+YP7WiCctPsPMcbfGAS
-
-      # usar hostname interno del servicio
       - DOMSERVER_BASEURL=http://domjudge/
-
-      # evita problemas de memory controller
       - CGROUP_MEMORY_LIMIT=0
 
     depends_on:
