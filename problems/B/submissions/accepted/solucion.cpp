@@ -1,10 +1,10 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
-    int n;
-    cin >> n;
-    for (int i = 1; i <= n; i++)
-        cout << i << endl;
+    string s;
+    getline(cin, s);
+    cout << s << endl;
     return 0;
 }

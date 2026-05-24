@@ -1,2 +1,2 @@
-n = int(input())
-print("Hola mundo")
+a, b = map(int, input().split())
+print(a * b)

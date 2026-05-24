@@ -2,8 +2,9 @@
 using namespace std;
 
 int main() {
-    long long a, b;
-    cin >> a >> b;
-    cout << a + b << endl;
+    int n;
+    cin >> n;
+    for (int i = 1; i <= 10; i++)
+        cout << n * i << endl;
     return 0;
 }

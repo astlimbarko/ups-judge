@@ -1,10 +1,10 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
-    int n;
-    cin >> n;
-    for (int i = 1; i <= 10; i++)
-        cout << n * i << endl;
+    string linea;
+    getline(cin, linea);
+    cout << "Hola " << linea << endl;
     return 0;
 }

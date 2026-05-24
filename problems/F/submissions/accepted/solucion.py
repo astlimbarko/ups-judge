@@ -1,2 +1,2 @@
-a, b = map(int, input().split())
-print(max(a, b))
+n = int(input())
+print("par" if n % 2 == 0 else "impar")
