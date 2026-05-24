@@ -39,12 +39,14 @@ services:
     restart: unless-stopped
     privileged: true
     hostname: judgedaemon
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
     environment:
       - CONTAINER_TIMEZONE=America/La_Paz
       - DAEMON_ID=0
       - JUDGEDAEMON_PASSWORD=zyjH+VAQTR4Bw+YP7WiCctPsPMcbfGAS
-      - DOMSERVER_BASEURL=http://domjudge/
-      - DOMJUDGE_CREATE_CGROUPS=0
+      - DOMSERVER_BASEURL=http://ups-judge-app/
+      - CGROUP_MEMORY_LIMIT=0
     depends_on:
       - domjudge
 

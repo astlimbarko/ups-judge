@@ -87,3 +87,13 @@ git pull
 # VOLVER A LEVANTAR
 docker-compose up --build -d
 ```
+
+
+
+nuevos cambios para documentar:
+Editar GRUB para ....
+sudo nano /etc/default/grub
+quitamos esto:
+GRUB_CMDLINE_LINUX_DEFAULT=""
+y introdujimos esto:
+GRUB_CMDLINE_LINUX_DEFAULT="systemd.unified_cgroup_hierarchy=1 cgroup_enable=memory"
