@@ -3,7 +3,7 @@
 # Ejecutar desde Ubuntu Server donde corre DOMjudge
 
 API_URL="http://192.168.42.130/api/v4"
-CID="testing-ups-2026"
+CID="test1"
 USER="admin"
 PASS="5Vzz6HPmTMFD7ZP0"
 
