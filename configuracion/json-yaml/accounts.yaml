@@ -1,41 +1,55 @@
-- id: team01
-  username: team01
-  password: byteforce
+- id: byteforce
+  username: byteforce
+  password: byteforce2026
   type: team
   team_id: "1"
   name: ByteForce
 
-- id: team02
-  username: team02
-  password: nullpointers
+- id: nullpointers
+  username: nullpointers
+  password: nullpointers2026
   type: team
   team_id: "2"
   name: NullPointers
 
-- id: team03
-  username: team03
-  password: stackoverflow
+- id: stackoverflow
+  username: stackoverflow
+  password: stackoverflow2026
   type: team
   team_id: "3"
   name: StackOverflow
 
-- id: team04
-  username: team04
-  password: runtimeterror
+- id: runtimeterror
+  username: runtimeterror
+  password: runtimeterror2026
   type: team
   team_id: "4"
   name: Runtime Terror
 
-- id: team05
-  username: team05
-  password: segfault
+- id: segfault
+  username: segfault
+  password: segfault2026
   type: team
   team_id: "5"
   name: Segfault
 
-- id: team06
-  username: team06
-  password: ctrl+cctrl+v
+- id: ctrl_c_ctrl_v
+  username: ctrl_c_ctrl_v
+  password: ctrl_c_ctrl_v2026
   type: team
   team_id: "6"
   name: Ctrl+C Ctrl+V
+
+- id: cin_derecho
+  username: cin_derecho
+  password: cin_derecho2026
+  type: team
+  team_id: "7"
+  name: Cin derecho ++
+
+- id: sospechosos
+  username: sospechosos
+  password: sospechosos2026
+  type: team
+  team_id: "8"
+  name: SOSpechosos

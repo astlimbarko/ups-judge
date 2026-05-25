@@ -34,5 +34,17 @@
     "name": "Ctrl+C Ctrl+V",
     "group_ids": ["1"],
     "organization_id": "EMI"
+  },
+  {
+    "id": "7",
+    "name": "Cin derecho ++",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "8",
+    "name": "SOSpechosos",
+    "group_ids": ["1"],
+    "organization_id": "UDABOL"
   }
 ]
