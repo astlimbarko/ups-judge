@@ -50,9 +50,7 @@ services:
 
   judgehost:
     container_name: ups-judge-judgehost
-    build:
-      context: .
-      dockerfile: Dockerfile.judgehost
+    image: domjudge/judgehost:latest
     restart: unless-stopped
 
     init: true
