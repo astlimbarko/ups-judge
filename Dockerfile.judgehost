@@ -2,13 +2,26 @@ FROM domjudge/judgehost:9.0.0
 
 USER root
 
-# Instalar Kotlin (requiere unzip + descarga del compilador oficial)
+# Instalar Kotlin
 RUN apt-get update && \
     apt-get install -y --no-install-recommends unzip wget && \
-    wget -q https://github.com/JetBrains/kotlin/releases/download/v2.0.21/kotlin-compiler-2.0.21.zip -O /tmp/kotlin.zip && \
+    wget -q https://github.com/JetBrains/kotlin/releases/download/v1.9.25/kotlin-compiler-1.9.25.zip -O /tmp/kotlin.zip && \
     unzip -q /tmp/kotlin.zip -d /opt && \
     ln -s /opt/kotlinc/bin/kotlinc /usr/local/bin/kotlinc && \
     ln -s /opt/kotlinc/bin/kotlin /usr/local/bin/kotlin && \
     rm /tmp/kotlin.zip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Crear wrapper del start.sh que copia Kotlin al chroot en background
+RUN mv /scripts/start.sh /scripts/start-original.sh && \
+    printf '#!/bin/bash\n\
+# Copiar Kotlin al chroot en background (espera a que exista)\n\
+(\n\
+  while [ ! -d /chroot/domjudge/usr/lib/jvm/java-21-openjdk-amd64/lib ]; do sleep 2; done\n\
+  cp /opt/kotlinc/lib/*.jar /chroot/domjudge/usr/lib/jvm/java-21-openjdk-amd64/lib/\n\
+  chmod 644 /chroot/domjudge/usr/lib/jvm/java-21-openjdk-amd64/lib/kotlin-*.jar\n\
+) &\n\
+# Ejecutar el script original\n\
+exec /scripts/start-original.sh "$@"\n' > /scripts/start.sh && \
+    chmod +x /scripts/start.sh

@@ -32,7 +32,7 @@ services:
       - domjudge_etc:/opt/domjudge/domserver/etc
 
     ports:
-      - "80:80"
+      - "8080:80"
 
     environment:
       - CONTAINER_TIMEZONE=America/La_Paz
@@ -50,7 +50,9 @@ services:
 
   judgehost:
     container_name: ups-judge-judgehost
-    image: astlimbark/ups-judgehost:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.judgehost
     restart: unless-stopped
 
     init: true
@@ -71,7 +73,7 @@ services:
     environment:
       - CONTAINER_TIMEZONE=America/La_Paz
       - DAEMON_ID=0
-      - JUDGEDAEMON_PASSWORD=zyjH+VAQTR4Bw+YP7WiCctPsPMcbfGAS
+      - JUDGEDAEMON_PASSWORD=giFw9E4byB0NXV7MSUSJ8oLsuwf8QsZB
       - DOMSERVER_BASEURL=http://domjudge/
       - CGROUP_MEMORY_LIMIT=0
 
