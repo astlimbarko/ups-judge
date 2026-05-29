@@ -1,0 +1,1122 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. Todos los derechos reservados.
+
+Prueba la nueva tecnología PowerShell multiplataforma https://aka.ms/pscore6
+
+PS C:\Users\Chalo> ssh 192.168.42.130
+chalo@192.168.42.130's password:
+Permission denied, please try again.
+chalo@192.168.42.130's password:
+PS C:\Users\Chalo> ssh admin@192.168.42.130
+admin@192.168.42.130's password:
+Welcome to Ubuntu 26.04 LTS (GNU/Linux 7.0.0-15-generic x86_64)
+
+ * Documentation:  https://docs.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of mar 26 may 2026 23:45:23 -04
+
+  System load:  1.16               Processes:              359
+  Usage of /:   61.7% of 13.67GB   Users logged in:        0
+  Memory usage: 10%                IPv4 address for ens33: 192.168.42.130
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+El mantenimiento de seguridad expandido para Applications está desactivado
+
+Se pueden aplicar 0 actualizaciones de forma inmediata.
+
+Active ESM Apps para recibir futuras actualizaciones de seguridad adicionales.
+Vea https://ubuntu.com/esm o ejecute «sudo pro status»
+
+
+Last login: Tue May 26 23:45:24 2026 from 192.168.42.1
+admin@upc-judge:~$ cd /opt
+admin@upc-judge:/opt$ ls
+containerd  upc-judge
+admin@upc-judge:/opt$ cd upc-judge/
+admin@upc-judge:/opt/upc-judge$ ls
+ups-judge
+admin@upc-judge:/opt/upc-judge$ cd ups-judge/
+admin@upc-judge:/opt/upc-judge/ups-judge$ ls
+ Dockerfile.judgehost          'docker-compose - viejo.yml'   docker-compose.yml
+ configuracion                 'docker-compose - viejo2yml'   problems
+'docker-compose (Copiar).yml'   docker-compose.dev.yml        tutorial_ubuntu.txt
+admin@upc-judge:/opt/upc-judge/ups-judge$ docker compose
+Usage:  docker compose [OPTIONS] COMMAND
+
+Define and run multi-container applications with Docker
+
+Options:
+      --all-resources              Include all resources, even those not used by services
+      --ansi string                Control when to print ANSI control characters ("never"|"always"|"auto")
+                                   (default "auto")
+      --compatibility              Run compose in backward compatibility mode
+      --dry-run                    Execute command in dry run mode
+      --env-file stringArray       Specify an alternate environment file
+  -f, --file stringArray           Compose configuration files
+      --parallel int               Control max parallelism, -1 for unlimited (default -1)
+      --profile stringArray        Specify a profile to enable
+      --progress string            Set type of progress output (auto, tty, plain, json, quiet)
+      --project-directory string   Specify an alternate working directory
+                                   (default: the path of the, first specified, Compose file)
+  -p, --project-name string        Project name
+
+Management Commands:
+  bridge                  Convert compose files into another model
+
+Commands:
+  attach                  Attach local standard input, output, and error streams to a service's running container
+  build                   Build or rebuild services
+  commit                  Create a new image from a service container's changes
+  config                  Parse, resolve and render compose file in canonical format
+  cp                      Copy files/folders between a service container and the local filesystem
+  create                  Creates containers for a service
+  down                    Stop and remove containers, networks
+  events                  Receive real time events from containers
+  exec                    Execute a command in a running container
+  export                  Export a service container's filesystem as a tar archive
+  images                  List images used by the created containers
+  kill                    Force stop service containers
+  logs                    View output from containers
+  ls                      List running compose projects
+  pause                   Pause services
+  port                    Print the public port for a port binding
+  ps                      List containers
+  publish                 Publish compose application
+  pull                    Pull service images
+  push                    Push service images
+  restart                 Restart service containers
+  rm                      Removes stopped service containers
+  run                     Run a one-off command on a service
+  scale                   Scale services
+  start                   Start services
+  stats                   Display a live stream of container(s) resource usage statistics
+  stop                    Stop services
+  top                     Display the running processes
+  unpause                 Unpause services
+  up                      Create and start containers
+  version                 Show the Docker Compose version information
+  volumes                 List volumes
+  wait                    Block until containers of all (or specified) services stop.
+  watch                   Watch build context for service and rebuild/refresh containers when files are updated
+
+Run 'docker compose COMMAND --help' for more information on a command.
+admin@upc-judge:/opt/upc-judge/ups-judge$ docker ps
+permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+admin@upc-judge:/opt/upc-judge/ups-judge$ sudo su
+[sudo: authenticate] Password:
+root@upc-judge:/opt/upc-judge/ups-judge# docker ps
+CONTAINER ID   IMAGE                             COMMAND                  CREATED        STATUS                        PORTS                NAMES
+dffef624b2f4   astlimbark/ups-judgehost:latest   "/usr/bin/dumb-init …"   46 hours ago   Up 51 seconds                ups-judge-judgehost
+17a1d5aefa1e   astlimbark/ups-judge:latest       "/scripts/start.sh"      46 hours ago   Up About a minute (healthy)   0.0.0.0:80->80/tcp, [::]:80->80/tcp   ups-judge-app
+e8be602e110f   mariadb                           "docker-entrypoint.s…"   46 hours ago   Up About a minute             3306/tcp                ups-judge-db
+root@upc-judge:/opt/upc-judge/ups-judge# df
+Filesystem                        1K-blocks    Used Available Use% Mounted on
+tmpfs                               1510736    1884   1508852   1% /run
+/dev/mapper/ubuntu--vg-ubuntu--lv  14339080 9118292   4470608  68% /
+tmpfs                               3776840       0   3776840   0% /dev/shm
+tmpfs                               3776840       0   3776840   0% /tmp
+none                                   1024       0      1024   0% /run/credentials/systemd-journald.service
+none                                   1024       0      1024   0% /run/credentials/systemd-resolved.service
+/dev/sda2                           1992552   97536   1773776   6% /boot
+none                                   1024       0      1024   0% /run/credentials/systemd-networkd.service
+none                                   1024       0      1024   0% /run/credentials/getty@tty1.service
+overlay                            14339080 9118292   4470608  68% /var/lib/docker/rootfs/overlayfs/e8be602e110f768f8c190732bf671a7b8e0f991c5f61ed047a48fb25b07c42d9
+overlay                            14339080 9118292   4470608  68% /var/lib/docker/rootfs/overlayfs/17a1d5aefa1e0b704030e40a949d6294f13d0752100227ffb1747782589b34e8
+overlay                            14339080 9118292   4470608  68% /var/lib/docker/rootfs/overlayfs/dffef624b2f44ed3f810640dbc0695e3707b750adf3842099d05c484b263e211
+tmpfs                                755368       8    755360   1% /run/user/1001
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec -it ups-judge-judgehost df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+overlay                             14G  8.7G  4.3G  68% /
+tmpfs                               64M     0   64M   0% /dev
+shm                                 64M     0   64M   0% /dev/shm
+/dev/mapper/ubuntu--vg-ubuntu--lv   14G  8.7G  4.3G  68% /usr/sbin/docker-init
+tmpfs                              3.7G     0  3.7G   0% /run
+tmpfs                              3.7G     0  3.7G   0% /run/lock
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec -it ups-judge-judgehost df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+overlay                             14G  8.7G  4.3G  68% /
+tmpfs                               64M     0   64M   0% /dev
+shm                                 64M     0   64M   0% /dev/shm
+/dev/mapper/ubuntu--vg-ubuntu--lv   14G  8.7G  4.3G  68% /usr/sbin/docker-init
+tmpfs                              3.7G     0  3.7G   0% /run
+tmpfs                              3.7G     0  3.7G   0% /run/lock
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec -it ups-judge-judgehost sh
+# df -h
+mountFilesystem                         Size  Used Avail Use% Mounted on
+overlay                             14G  8.7G  4.3G  68% /
+tmpfs                               64M     0   64M   0% /dev
+shm                                 64M     0   64M   0% /dev/shm
+/dev/mapper/ubuntu--vg-ubuntu--lv   14G  8.7G  4.3G  68% /usr/sbin/docker-init
+tmpfs                              3.7G     0  3.7G   0% /run
+tmpfs                              3.7G     0  3.7G   0% /run/lock
+# df -h /tmp
+df -hsh: 2: mountdf: not found
+#  /var
+df -h /var/judgings
+df -h /opt/domjudgeFilesystem      Size  Used Avail Use% Mounted on
+overlay          14G  8.7G  4.3G  68% /
+# df: /var/judgings: No such file or directory
+# docker logs ups-judge-judgehost --tail 200
+df: unrecognized option '--tail'
+Try 'df --help' for more information.
+# ^C
+# ^C
+# exit
+root@upc-judge:/opt/upc-judge/ups-judge# docker logs ups-judge-judgehost --tail 200
+[May 27 04:27:15.633] judgedaemon[41]: 🔏 Executing chroot script: 'chroot-startstop.sh check'
+[May 27 04:27:15.775] judgedaemon[41]: Registering judgehost on endpoint default: http://domjudge/api/v4
+[May 27 04:27:16.083] judgedaemon[41]: No submissions in queue (for endpoint default), waiting...
+[May 27 04:27:16.126] judgedaemon[41]: Judgehost needs to be enabled in web interface.
+[May 27 04:29:32.956] judgedaemon[41]: Received signal, exiting.
+[..] Setting timezone
+
+Current default time zone: 'America/La_Paz'
+Local time is now:      Wed May 27 00:29:34 -04 2026.
+Universal Time is now:  Wed May 27 04:29:34 UTC 2026.
+
+[ok] Container timezone set to: America/La_Paz
+
+[..] Setting up restapi file
+[ok] Restapi file set up
+
+[..] Setting up cgroups
+[ok] cgroups set up
+
+[..] Copying resolv.conf to chroot
+[ok] resolv.conf copied
+
+[May 27 04:29:34.705] judgedaemon[41]: Judge started on judgedaemon-0 [DOMjudge/9.0.0]
+[May 27 04:29:34.706] judgedaemon[41]: 🔏 Executing chroot script: 'chroot-startstop.sh check'
+[May 27 04:29:34.774] judgedaemon[41]: Registering judgehost on endpoint default: http://domjudge/api/v4
+[May 27 04:29:34.964] judgedaemon[41]: No submissions in queue (for endpoint default), waiting...
+[May 27 04:29:35.010] judgedaemon[41]: Judgehost needs to be enabled in web interface.
+[May 27 04:31:20.367] judgedaemon[41]: ⇝ Received 4 'judging_run' judge tasks (endpoint default)
+[May 27 04:31:20.367] judgedaemon[41]:   Working directory: /opt/domjudge/judgehost/judgings/judgedaemon-0/endpoint-default/11/11
+[May 27 04:31:20.376] judgedaemon[41]:   🔒 Executing chroot script: 'chroot-startstop.sh start'
+[May 27 04:31:20.738] judgedaemon[41]:   📋 Verifying versions.
+[May 27 04:31:21.394] judgedaemon[41]:   💾 Fetching new executable 'compile/16' with hash 'd60c77a610c73edd95d8cabb0a5a191d'.
+[May 27 04:31:25.826] judgedaemon[41]: warning: compile script exited with exitcode 101
+[May 27 04:31:25.826] judgedaemon[41]:   💻 Compilation: (Main.kt) 'compiler-error'
+[May 27 04:31:26.321] judgedaemon[41]: ⇝ Received 4 'judging_run' judge tasks (endpoint default)
+[May 27 04:31:26.321] judgedaemon[41]:   Working directory: /opt/domjudge/judgehost/judgings/judgedaemon-0/endpoint-default/12/12
+[May 27 04:31:26.321] judgedaemon[41]:   🔓 Executing chroot script: 'chroot-startstop.sh stop'
+[May 27 04:31:26.481] judgedaemon[41]:   🔒 Executing chroot script: 'chroot-startstop.sh start'
+[May 27 04:31:26.936] judgedaemon[41]:   📋 Verifying versions.
+[May 27 04:31:28.528] judgedaemon[41]: warning: compile script exited with exitcode 101
+[May 27 04:31:28.529] judgedaemon[41]:   💻 Compilation: (Doble.kt) 'compiler-error'
+[May 27 04:31:29.359] judgedaemon[41]:   🔓 Executing chroot script: 'chroot-startstop.sh stop'
+[May 27 04:31:29.610] judgedaemon[41]: No submissions in queue (for endpoint default), waiting...
+[May 27 04:35:05.604] judgedaemon[41]: Received signal, exiting.
+[..] Setting timezone
+
+Current default time zone: 'America/La_Paz'
+Local time is now:      Thu May 28 22:14:46 -04 2026.
+Universal Time is now:  Fri May 29 02:14:46 UTC 2026.
+
+[ok] Container timezone set to: America/La_Paz
+
+[..] Setting up restapi file
+[ok] Restapi file set up
+
+[..] Setting up cgroups
+[ok] cgroups set up
+
+[..] Copying resolv.conf to chroot
+[ok] resolv.conf copied
+
+[May 29 02:14:49.957] judgedaemon[41]: Judge started on judgedaemon-0 [DOMjudge/9.0.0]
+[May 29 02:14:49.962] judgedaemon[41]: 🔏 Executing chroot script: 'chroot-startstop.sh check'
+[May 29 02:14:50.227] judgedaemon[41]: Registering judgehost on endpoint default: http://domjudge/api/v4
+[May 29 02:14:50.288] judgedaemon[41]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 5 ms: Couldn't connect to server This request will be retried after about 1.1416895250518sec... (1/3)
+[May 29 02:14:51.431] judgedaemon[41]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 2.1651815679694sec... (2/3)
+[May 29 02:14:53.598] judgedaemon[41]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server Retry limit reached.
+[May 29 02:14:53.598] judgedaemon[41]: Registering judgehost on endpoint default failed.
+[May 29 02:14:53.599] judgedaemon[41]: warning: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 1.1637031943368sec... (1/3)
+[May 29 02:14:54.764] judgedaemon[41]: warning: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 2.1042334977091sec... (2/3)
+[May 29 02:14:56.869] judgedaemon[41]: error: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server Retry limit reached.
+[..] Setting timezone
+
+Current default time zone: 'America/La_Paz'
+Local time is now:      Thu May 28 22:15:00 -04 2026.
+Universal Time is now:  Fri May 29 02:15:00 UTC 2026.
+
+[ok] Container timezone set to: America/La_Paz
+
+[..] Setting up restapi file
+[ok] Restapi file set up
+
+[..] Setting up cgroups
+[ok] cgroups set up
+
+[..] Copying resolv.conf to chroot
+[ok] resolv.conf copied
+
+[May 29 02:15:00.390] judgedaemon[41]: Judge started on judgedaemon-0 [DOMjudge/9.0.0]
+[May 29 02:15:00.392] judgedaemon[41]: 🔏 Executing chroot script: 'chroot-startstop.sh check'
+[May 29 02:15:00.469] judgedaemon[41]: Registering judgehost on endpoint default: http://domjudge/api/v4
+[May 29 02:15:00.516] judgedaemon[41]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 32 ms: Couldn't connect to server This request will be retried after about 1.182506399221sec... (1/3)
+[May 29 02:15:01.700] judgedaemon[41]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 2.1901937524742sec... (2/3)
+[May 29 02:15:03.892] judgedaemon[41]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server Retry limit reached.
+[May 29 02:15:03.892] judgedaemon[41]: Registering judgehost on endpoint default failed.
+[May 29 02:15:03.898] judgedaemon[41]: warning: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 5 ms: Couldn't connect to server This request will be retried after about 1.0104862056721sec... (1/3)
+[May 29 02:15:04.911] judgedaemon[41]: warning: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 2.1765519630986sec... (2/3)
+[May 29 02:15:07.089] judgedaemon[41]: error: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server Retry limit reached.
+[..] Setting timezone
+
+Current default time zone: 'America/La_Paz'
+Local time is now:      Thu May 28 22:15:10 -04 2026.
+Universal Time is now:  Fri May 29 02:15:10 UTC 2026.
+
+[ok] Container timezone set to: America/La_Paz
+
+[..] Setting up restapi file
+[ok] Restapi file set up
+
+[..] Setting up cgroups
+[ok] cgroups set up
+
+[..] Copying resolv.conf to chroot
+[ok] resolv.conf copied
+
+[May 29 02:15:10.573] judgedaemon[41]: Judge started on judgedaemon-0 [DOMjudge/9.0.0]
+[May 29 02:15:10.574] judgedaemon[41]: 🔏 Executing chroot script: 'chroot-startstop.sh check'
+[May 29 02:15:10.684] judgedaemon[41]: Registering judgehost on endpoint default: http://domjudge/api/v4
+[May 29 02:15:10.711] judgedaemon[41]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 7 ms: Couldn't connect to server This request will be retried after about 1.0447771572716sec... (1/3)
+[May 29 02:15:11.757] judgedaemon[41]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 2.1628651985726sec... (2/3)
+[May 29 02:15:13.922] judgedaemon[41]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server Retry limit reached.
+[May 29 02:15:13.923] judgedaemon[41]: Registering judgehost on endpoint default failed.
+[May 29 02:15:13.926] judgedaemon[41]: warning: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 1.1796109134236sec... (1/3)
+[May 29 02:15:15.107] judgedaemon[41]: warning: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 2.174793683912sec... (2/3)
+[May 29 02:15:17.283] judgedaemon[41]: error: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server Retry limit reached.
+[..] Setting timezone
+
+Current default time zone: 'America/La_Paz'
+Local time is now:      Thu May 28 22:15:20 -04 2026.
+Universal Time is now:  Fri May 29 02:15:20 UTC 2026.
+
+[ok] Container timezone set to: America/La_Paz
+
+[..] Setting up restapi file
+[ok] Restapi file set up
+
+[..] Setting up cgroups
+[ok] cgroups set up
+
+[..] Copying resolv.conf to chroot
+[ok] resolv.conf copied
+
+[May 29 02:15:20.765] judgedaemon[41]: Judge started on judgedaemon-0 [DOMjudge/9.0.0]
+[May 29 02:15:20.766] judgedaemon[41]: 🔏 Executing chroot script: 'chroot-startstop.sh check'
+[May 29 02:15:20.844] judgedaemon[41]: Registering judgehost on endpoint default: http://domjudge/api/v4
+[May 29 02:15:20.857] judgedaemon[41]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 4 ms: Couldn't connect to server This request will be retried after about 1.0561215186753sec... (1/3)
+[May 29 02:15:21.916] judgedaemon[41]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 2.0119253262002sec... (2/3)
+[May 29 02:15:23.929] judgedaemon[41]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server Retry limit reached.
+[May 29 02:15:23.929] judgedaemon[41]: Registering judgehost on endpoint default failed.
+[May 29 02:15:23.931] judgedaemon[41]: warning: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 1.1502269104823sec... (1/3)
+[May 29 02:15:25.082] judgedaemon[41]: warning: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 2.1581171293548sec... (2/3)
+[May 29 02:15:27.241] judgedaemon[41]: error: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server Retry limit reached.
+[..] Setting timezone
+
+Current default time zone: 'America/La_Paz'
+Local time is now:      Thu May 28 22:15:30 -04 2026.
+Universal Time is now:  Fri May 29 02:15:30 UTC 2026.
+
+[ok] Container timezone set to: America/La_Paz
+
+[..] Setting up restapi file
+[ok] Restapi file set up
+
+[..] Setting up cgroups
+[ok] cgroups set up
+
+[..] Copying resolv.conf to chroot
+[ok] resolv.conf copied
+
+[May 29 02:15:30.701] judgedaemon[40]: Judge started on judgedaemon-0 [DOMjudge/9.0.0]
+[May 29 02:15:30.702] judgedaemon[40]: 🔏 Executing chroot script: 'chroot-startstop.sh check'
+[May 29 02:15:30.856] judgedaemon[40]: Registering judgehost on endpoint default: http://domjudge/api/v4
+[May 29 02:15:30.891] judgedaemon[40]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 12 ms: Couldn't connect to server This request will be retried after about 1.0578628699565sec... (1/3)
+[May 29 02:15:31.951] judgedaemon[40]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 2.1306631687706sec... (2/3)
+[May 29 02:15:34.082] judgedaemon[40]: warning: Error while executing curl POST to url http://domjudge/api/v4/judgehosts: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server Retry limit reached.
+[May 29 02:15:34.083] judgedaemon[40]: Registering judgehost on endpoint default failed.
+[May 29 02:15:34.084] judgedaemon[40]: warning: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 1.1793665713535sec... (1/3)
+[May 29 02:15:35.264] judgedaemon[40]: warning: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server This request will be retried after about 2.1671412424031sec... (2/3)
+[May 29 02:15:37.433] judgedaemon[40]: error: Error while executing curl GET to url http://domjudge/api/v4/config?: Failed to connect to domjudge port 80 after 0 ms: Couldn't connect to server Retry limit reached.
+[..] Setting timezone
+
+Current default time zone: 'America/La_Paz'
+Local time is now:      Thu May 28 22:15:40 -04 2026.
+Universal Time is now:  Fri May 29 02:15:40 UTC 2026.
+
+[ok] Container timezone set to: America/La_Paz
+
+[..] Setting up restapi file
+[ok] Restapi file set up
+
+[..] Setting up cgroups
+[ok] cgroups set up
+
+[..] Copying resolv.conf to chroot
+[ok] resolv.conf copied
+
+[May 29 02:15:40.854] judgedaemon[42]: Judge started on judgedaemon-0 [DOMjudge/9.0.0]
+[May 29 02:15:40.855] judgedaemon[42]: 🔏 Executing chroot script: 'chroot-startstop.sh check'
+[May 29 02:15:40.931] judgedaemon[42]: Registering judgehost on endpoint default: http://domjudge/api/v4
+[May 29 02:15:46.621] judgedaemon[42]: No submissions in queue (for endpoint default), waiting...
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec ups-judge-judgehost env | sort
+CGROUP_MEMORY_LIMIT=0
+CONTAINER_TIMEZONE=America/La_Paz
+DAEMON_ID=0
+DEBIAN_FRONTEND=noninteractive
+DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=0
+DOMSERVER_BASEURL=http://domjudge/
+HOME=/root
+HOSTNAME=judgedaemon
+JUDGEDAEMON_PASSWORD=zyjH+VAQTR4Bw+YP7WiCctPsPMcbfGAS
+JUDGEDAEMON_USERNAME=judgehost
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/domjudge/judgehost/bin
+RUN_USER_UID_GID=62860
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec -it ups-judge-judgehost sh
+# curl -I http://domjudge/
+sh: 1: curl: not found
+# curl http://domjudge/api/v4/config
+sh: 2: curl: not found
+# docker network ls
+sh: 3: docker: not found
+# docker inspect ups-judge-app | grep -A 20 NetworkSettings
+sh: 4: docker: not found
+# exit
+root@upc-judge:/opt/upc-judge/ups-judge# docker network ls
+NETWORK ID     NAME                DRIVER    SCOPE
+995b04c474af   bridge              bridge    local
+bebeb9e110cd   host                host      local
+72a9174fa22b   none                null      local
+ebd54031e383   ups-judge_default   bridge    local
+root@upc-judge:/opt/upc-judge/ups-judge# docker inspect ups-judge-app | grep -A 20 NetworkSettings
+        "NetworkSettings": {
+            "SandboxID": "05f3f70d1bd7b1a25952f2bbdfc601f0b1426bda28ceb7a706bd75eb80af0125",
+            "SandboxKey": "/var/run/docker/netns/05f3f70d1bd7",
+            "Ports": {
+                "80/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "80"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "80"
+                    }
+                ]
+            },
+            "Networks": {
+                "ups-judge_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "ups-judge-app",
+root@upc-judge:/opt/upc-judge/ups-judge# docker inspect ups-judge-judgehost | grep -A 20 NetworkSettings0
+root@upc-judge:/opt/upc-judge/ups-judge# docker inspect ups-judge-judgehost | grep -A 30 NetworkSettings
+        "NetworkSettings": {
+            "SandboxID": "eda3a17b02d3c47bbf436d7493c859cf89c02186880166b3070d9149c5332846",
+            "SandboxKey": "/var/run/docker/netns/eda3a17b02d3",
+            "Ports": {},
+            "Networks": {
+                "ups-judge_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "ups-judge-judgehost",
+                        "judgehost"
+                    ],
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "ebd54031e38333283aca28d91234507e4f62dd627e2acf36898333f6f5bb8d70",
+                    "EndpointID": "20d06ae6d8a3cad7353c4434595bf304982159dd115fbc1cdd73c3e14b7adff1",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.2",
+                    "MacAddress": "ca:40:52:b6:88:56",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "ups-judge-judgehost",
+                        "judgehost",
+                        "dffef624b2f4",
+                        "judgedaemon"
+                    ]
+                }
+            }
+root@upc-judge:/opt/upc-judge/ups-judge# docker inspect ups-judge-judgehost --format='{{json .NetworkSettings.Networks}}'
+{"ups-judge_default":{"IPAMConfig":null,"Links":null,"Aliases":["ups-judge-judgehost","judgehost"],"DriverOpts":null,"GwPriority":0,"NetworkID":"ebd54031e38333283aca28d91234507e4f62dd627e2acf36898333f6f5bb8d70","EndpointID":"20d06ae6d8a3cad7353c4434595bf304982159dd115fbc1cdd73c3e14b7adff1","Gateway":"172.18.0.1","IPAddress":"172.18.0.2","MacAddress":"ca:40:52:b6:88:56","IPPrefixLen":16,"IPv6Gateway":"","GlobalIPv6Address":"","GlobalIPv6PrefixLen":0,"DNSNames":["ups-judge-judgehost","judgehost","dffef624b2f4","judgedaemon"]}}
+root@upc-judge:/opt/upc-judge/ups-judge# docker inspect ups-judge-app --format='{{json .NetworkSettings.Networks}}'
+{"ups-judge_default":{"IPAMConfig":null,"Links":null,"Aliases":["ups-judge-app","domjudge"],"DriverOpts":null,"GwPriority":0,"NetworkID":"ebd54031e38333283aca28d91234507e4f62dd627e2acf36898333f6f5bb8d70","EndpointID":"efddc806f3f6ca9293001fba539c9b05f12a962cec07238325476ecb643d8a6f","Gateway":"172.18.0.1","IPAddress":"172.18.0.4","MacAddress":"ce:58:d6:06:1a:83","IPPrefixLen":16,"IPv6Gateway":"","GlobalIPv6Address":"","GlobalIPv6PrefixLen":0,"DNSNames":["ups-judge-app","domjudge","17a1d5aefa1e"]}}
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec -it ups-judge-judgehost sh
+# getent hosts domjudge
+172.18.0.4      domjudge
+# getent hosts domjudge
+172.18.0.4      domjudge
+# ping -c 1 domjudge
+sh: 3: ping: not found
+# exit
+root@upc-judge:/opt/upc-judge/ups-judge# ping -c 1 domjudge
+ping: domjudge: Temporary failure in name resolution
+root@upc-judge:/opt/upc-judge/ups-judge# ls
+ Dockerfile.judgehost          'docker-compose - viejo.yml'   docker-compose.yml
+ configuracion                 'docker-compose - viejo2yml'   problems
+'docker-compose (Copiar).yml'   docker-compose.dev.yml        tutorial_ubuntu.txt
+root@upc-judge:/opt/upc-judge/ups-judge# nano docker-compose.yml
+
+
+
+root@upc-judge:/opt/upc-judge/ups-judge# docker ps
+CONTAINER ID   IMAGE                             COMMAND                  CREATED        STATUS                    PORTS            NAMES
+dffef624b2f4   astlimbark/ups-judgehost:latest   "/usr/bin/dumb-init …"   46 hours ago   Up 19 minutes            ups-judge-judgehost
+17a1d5aefa1e   astlimbark/ups-judge:latest       "/scripts/start.sh"      46 hours ago   Up 20 minutes (healthy)   0.0.0.0:80->80/tcp, [::]:80->80/tcp   ups-judge-app
+e8be602e110f   mariadb                           "docker-entrypoint.s…"   46 hours ago   Up 20 minutes             3306/tcp            ups-judge-db
+root@upc-judge:/opt/upc-judge/ups-judge# docker inspect ups-judge-judgehost --format='{{.RestartCount}}'
+5
+root@upc-judge:/opt/upc-judge/ups-judge# docker inspect ups-judge-judgehost --format='{{.State.ExitCode}}'
+0
+root@upc-judge:/opt/upc-judge/ups-judge# docker inspect ups-judge-judgehost --format='{{.State.Status}}'
+running
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec -it ups-judge-judgehost sh -c "which kotlinc"
+/usr/local/bin/kotlinc
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec -it ups-judge-judgehost sh -c "kotlinc -version"
+info: kotlinc-jvm 1.9.25 (JRE 21.0.10+7-Ubuntu-124.04)
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec -it ups-judge-judgehost sh -c "java -version"
+openjdk version "21.0.10" 2026-01-20
+OpenJDK Runtime Environment (build 21.0.10+7-Ubuntu-124.04)
+OpenJDK 64-Bit Server VM (build 21.0.10+7-Ubuntu-124.04, mixed mode, sharing)
+root@upc-judge:/opt/upc-judge/ups-judge# ls
+ Dockerfile.judgehost  'docker-compose (Copiar).yml'  'docker-compose - viejo2yml'   docker-compose.yml   tutorial_ubuntu.txt
+ configuracion         'docker-compose - viejo.yml'    docker-compose.dev.yml        problems
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec ups-judge-app find /opt/domjudge -type f | grep -i kotlin
+/opt/domjudge/domserver/webapp/src/DataFixtures/Test/EnableKotlinFixture.php
+/opt/domjudge/domserver/webapp/public/js/monaco/vs/basic-languages/kotlin/kotlin.js
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec ups-judge-app find /opt/domjudge -type f | grep compile
+/opt/domjudge/domserver/webapp/vendor/symfony/intl/Resources/bin/compile
+/opt/domjudge/domserver/webapp/vendor/select2/select2/docs/themes/learn2/css-compiled/theme.css
+/opt/domjudge/domserver/webapp/vendor/select2/select2/docs/themes/learn2/css-compiled/nucleus.css
+/opt/domjudge/domserver/webapp/vendor/select2/select2/docs/themes/learn2/css-compiled/theme.css.map
+/opt/domjudge/domserver/webapp/vendor/select2/select2/docs/themes/learn2/css-compiled/nucleus.css.map
+/opt/domjudge/domserver/webapp/vendor/apalfrey/select2-bootstrap-5-theme/.github/workflows/compile.yml
+/opt/domjudge/domserver/example_problems/hello/submissions/no_output/test-compile-warning.c
+/opt/domjudge/domserver/example_problems/hello/submissions/no_output/test-compile-warning.pas
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/test-compile-read-testcase.hs
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/test-syntax-error.R
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/test-hello-cpp.c
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/test-compile-error.pas
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/objectcode/message.o
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/objectcode/main.cc
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/objectcode/message.hpp
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/test-compile-error.py
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/multifile-js/package.json
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/multifile-js/hello.js
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/multifile-js/module.js
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/stress-test-compile-fill-stderr.c
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/multifile-js-2/package.json
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/multifile-js-2/hello.js
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/multifile-js-2/module.js
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/stress-test-compile-timeout.c
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/bogus-filename/test-file name#\.bogus ext
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/bogus-filename/test-file name\#.c
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/multifile-js-3/package.json
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/multifile-js-3/hello.js
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/multifile-js-3/module.js
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/test-compile-error.lua
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/test-compile-memory.c
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/test-binary-content.c
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/test-compile-error.rs
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/test-compile-error.c
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/test-compile-error.pl
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/stress-test-compile-fill-stderr.cc
+/opt/domjudge/domserver/example_problems/hello/submissions/compiler_error/mainclass-missing/main.java
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec -it ups-judge-judgehost sh
+# find /opt/domjudge -name run 2>/dev/null | grep compile
+/opt/domjudge/judgehost/judgings/judgedaemon-0/endpoint-default/12/12/compile-script/run
+/opt/domjudge/judgehost/judgings/judgedaemon-0/endpoint-default/executable/compile/16/d60c77a610c73edd95d8cabb0a5a191d/build/run
+/opt/domjudge/judgehost/judgings/judgedaemon-0/endpoint-default/11/11/compile-script/run
+# sed -n '1,120p' RUTA_ENCONTRADA
+sed: can't read RUTA_ENCONTRADA: No such file or directory
+# sed -n '1,120p' RUTA_ENCONTRADA
+sed: can't read RUTA_ENCONTRADA: No such file or directory
+# exit
+root@upc-judge:/opt/upc-judge/ups-judge# sed -n '1,120p' RUTA_ENCONTRADA
+sed: can't read RUTA_ENCONTRADA: No such file or directory
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec -it ups-judge-judgehost sh
+# sed -n '1,200p' /opt/domjudge/judgehost/judgings/judgedaemon-0/endpoint-default/executable/compile/16/d60c77a610c73edd95d8cabb0a5a191d/build/run
+#!/bin/sh
+
+# Kotlin compile wrapper-script for 'compile.sh'.
+# See that script for syntax and more info.
+#
+# This script byte-compiles with the kotlinc compiler and
+# generates a shell script to run it with the java interpreter with Kotlin
+# libraries later.
+#
+# This script requires that kotlinc is installed in the chroot.
+
+DEST="$1" ; shift
+MEMLIMIT="$1" ; shift
+MAINSOURCE="$1"
+MAINCLASS=""
+COMPILESCRIPTDIR="$(dirname "$0")"
+
+# Replace this with the directory where kotlinc is located if it is not in your path.
+# Note that you then also might want to fix this in the compiler and runner version commands.
+# For example
+# KOTLIN_DIR=/usr/lib/kotlinc/bin
+KOTLIN_DIR="$(dirname "$(realpath "$(command -v kotlinc)")")"
+
+# Stack size in the JVM in KB. Note that this will be deducted from
+# the total memory made available for the heap.
+MEMSTACK=65536
+
+# Amount of memory reserved for the Java virtual machine in KB. The
+# default below is just above the maximum memory usage of current
+# versions of the jvm, but might need increasing in some cases.
+MEMJVM=65536
+
+MEMRESERVED=$((MEMSTACK + MEMJVM))
+
+# Calculate Kotlin program memlimit as MEMLIMIT - max. JVM memory usage:
+MEMLIMITJAVA=$((MEMLIMIT - MEMRESERVED))
+
+if [ $MEMLIMITJAVA -le 0 ]; then
+        echo "internal-error: total memory $MEMLIMIT KiB <= $MEMJVM + $MEMSTACK = $MEMRESERVED KiB reserved for JVM and stack leaves none for heap."
+        exit 1
+fi
+
+# Allow overriding Kotlin main class (should not be necessary):
+if [ -z "$ENTRY_POINT" ]; then
+        [ -n "$DEBUG" ] && echo "Debug: no ENTRY_POINT provided, trying to detect main class."
+else
+        [ -n "$DEBUG" ] && echo "Debug: using main class provided by ENTRY_POINT='$ENTRY_POINT'."
+        MAINCLASS="$ENTRY_POINT"
+fi
+
+# Byte-compile:
+# Adding -Djava.io.tmpdir=/ here to avoid the compiler from crashing.
+# As part of the preloader of the kotlin compiler, the value of this property
+# gets copied into the idea.home.path property here:
+# https://github.com/JetBrains/kotlin/blob/8a0969156f86b7d1ae09ce140794ff554109c25f/compiler/cli/src/org/jetbrains/kotlin/cli/jvm/compiler/compat.kt#L23
+# Then in the actual compiler, the value of the property gets checked whether it is a directory:
+# https://github.com/JetBrains/intellij-community/blob/f36a688bd8541b7302246ea4f4b8f76b2223d2d7/platform/util/src/com/intellij/openapi/application/PathManager.java#L88
+# Typically, java.io.tmpdir is a /tmp which doesn't exist in our chroot so the
+# check fails. When passing in / as java.io.tmpdir, kotlinc is happy, although
+# the dir is not writable.
+"${KOTLIN_DIR}"/kotlinc -d . -Djava.io.tmpdir=/ "$@"
+EXITCODE=$?
+[ "$EXITCODE" -ne 0 ] && exit $EXITCODE
+
+KOTLIN_STDLIB="$(dirname "$KOTLIN_DIR")/lib/kotlin-stdlib.jar"
+
+if [ -z "$MAINCLASS" ]; then
+        # Look for class that has the 'main' function:
+        CLASSNAMES="$(find ./* -type f -regex '^.*\.class$' \
+                    | sed -e 's/\.class$//' -e 's/^\.\///' -e 's/\//./g')"
+        MAINCLASS=$(java -cp "$COMPILESCRIPTDIR:$KOTLIN_STDLIB" DetectMain "$(pwd)" $CLASSNAMES)
+        EXITCODE=$?
+
+        # Report the entry point, so it can be saved, e.g. for later replay:
+        echo "Info: detected entry_point: $MAINCLASS"
+
+        [ "$EXITCODE" -ne 0 ] && exit $EXITCODE
+else
+        # Check if entry point is valid
+        java -cp "$COMPILESCRIPTDIR:$KOTLIN_STDLIB" DetectMain "$(pwd)" $MAINCLASS > /dev/null
+        EXITCODE=$?
+        [ "$EXITCODE" -ne 0 ] && exit $EXITCODE
+fi
+
+# Write executing script:
+# Executes java byte-code interpreter with following options (prefixed
+# with -J to pass from kotlin to java):
+# -Xmx: maximum size of memory allocation pool
+# -Xms: initial size of memory, improves runtime stability
+# -XX:+UseSerialGC: Serialized garbage collector improves runtime stability
+# -Xss${MEMSTACK}k: stack size as configured abve
+# -Dfile.encoding=UTF-8: set file encoding to UTF-8
+cat > "$DEST" <<EOF
+#!/bin/sh
+# Generated shell-script to execute java interpreter on source.
+
+# Detect dirname and change dir to prevent class not found errors.
+if [ "\${0%/*}" != "\$0" ]; then
+        cd "\${0%/*}"
+fi
+
+# Add -J-DONLINE_JUDGE or -J-DDOMJUDGE below if you want it make easier for
+# teams to do local debugging.
+
+exec "${KOTLIN_DIR}"/kotlin -Dfile.encoding=UTF-8 -J-XX:+UseSerialGC -J-Xss${MEMSTACK}k -J-Xms${MEMLIMITJAVA}k -J-Xmx${MEMLIMITJAVA}k '$MAINCLASS' "\$@"
+EOF
+
+chmod a+x "$DEST"
+
+exit 0
+# sed -n '1,200p' /opt/domjudge/judgehost/judgings/judgedaemon-0/endpoint-default/12/12/compile-script/run
+#!/bin/sh
+
+# Kotlin compile wrapper-script for 'compile.sh'.
+# See that script for syntax and more info.
+#
+# This script byte-compiles with the kotlinc compiler and
+# generates a shell script to run it with the java interpreter with Kotlin
+# libraries later.
+#
+# This script requires that kotlinc is installed in the chroot.
+
+DEST="$1" ; shift
+MEMLIMIT="$1" ; shift
+MAINSOURCE="$1"
+MAINCLASS=""
+COMPILESCRIPTDIR="$(dirname "$0")"
+
+# Replace this with the directory where kotlinc is located if it is not in your path.
+# Note that you then also might want to fix this in the compiler and runner version commands.
+# For example
+# KOTLIN_DIR=/usr/lib/kotlinc/bin
+KOTLIN_DIR="$(dirname "$(realpath "$(command -v kotlinc)")")"
+
+# Stack size in the JVM in KB. Note that this will be deducted from
+# the total memory made available for the heap.
+MEMSTACK=65536
+
+# Amount of memory reserved for the Java virtual machine in KB. The
+# default below is just above the maximum memory usage of current
+# versions of the jvm, but might need increasing in some cases.
+MEMJVM=65536
+
+MEMRESERVED=$((MEMSTACK + MEMJVM))
+
+# Calculate Kotlin program memlimit as MEMLIMIT - max. JVM memory usage:
+MEMLIMITJAVA=$((MEMLIMIT - MEMRESERVED))
+
+if [ $MEMLIMITJAVA -le 0 ]; then
+        echo "internal-error: total memory $MEMLIMIT KiB <= $MEMJVM + $MEMSTACK = $MEMRESERVED KiB reserved for JVM and stack leaves none for heap."
+        exit 1
+fi
+
+# Allow overriding Kotlin main class (should not be necessary):
+if [ -z "$ENTRY_POINT" ]; then
+        [ -n "$DEBUG" ] && echo "Debug: no ENTRY_POINT provided, trying to detect main class."
+else
+        [ -n "$DEBUG" ] && echo "Debug: using main class provided by ENTRY_POINT='$ENTRY_POINT'."
+        MAINCLASS="$ENTRY_POINT"
+fi
+
+# Byte-compile:
+# Adding -Djava.io.tmpdir=/ here to avoid the compiler from crashing.
+# As part of the preloader of the kotlin compiler, the value of this property
+# gets copied into the idea.home.path property here:
+# https://github.com/JetBrains/kotlin/blob/8a0969156f86b7d1ae09ce140794ff554109c25f/compiler/cli/src/org/jetbrains/kotlin/cli/jvm/compiler/compat.kt#L23
+# Then in the actual compiler, the value of the property gets checked whether it is a directory:
+# https://github.com/JetBrains/intellij-community/blob/f36a688bd8541b7302246ea4f4b8f76b2223d2d7/platform/util/src/com/intellij/openapi/application/PathManager.java#L88
+# Typically, java.io.tmpdir is a /tmp which doesn't exist in our chroot so the
+# check fails. When passing in / as java.io.tmpdir, kotlinc is happy, although
+# the dir is not writable.
+"${KOTLIN_DIR}"/kotlinc -d . -Djava.io.tmpdir=/ "$@"
+EXITCODE=$?
+[ "$EXITCODE" -ne 0 ] && exit $EXITCODE
+
+KOTLIN_STDLIB="$(dirname "$KOTLIN_DIR")/lib/kotlin-stdlib.jar"
+
+if [ -z "$MAINCLASS" ]; then
+        # Look for class that has the 'main' function:
+        CLASSNAMES="$(find ./* -type f -regex '^.*\.class$' \
+                    | sed -e 's/\.class$//' -e 's/^\.\///' -e 's/\//./g')"
+        MAINCLASS=$(java -cp "$COMPILESCRIPTDIR:$KOTLIN_STDLIB" DetectMain "$(pwd)" $CLASSNAMES)
+        EXITCODE=$?
+
+        # Report the entry point, so it can be saved, e.g. for later replay:
+        echo "Info: detected entry_point: $MAINCLASS"
+
+        [ "$EXITCODE" -ne 0 ] && exit $EXITCODE
+else
+        # Check if entry point is valid
+        java -cp "$COMPILESCRIPTDIR:$KOTLIN_STDLIB" DetectMain "$(pwd)" $MAINCLASS > /dev/null
+        EXITCODE=$?
+        [ "$EXITCODE" -ne 0 ] && exit $EXITCODE
+fi
+
+# Write executing script:
+# Executes java byte-code interpreter with following options (prefixed
+# with -J to pass from kotlin to java):
+# -Xmx: maximum size of memory allocation pool
+# -Xms: initial size of memory, improves runtime stability
+# -XX:+UseSerialGC: Serialized garbage collector improves runtime stability
+# -Xss${MEMSTACK}k: stack size as configured abve
+# -Dfile.encoding=UTF-8: set file encoding to UTF-8
+cat > "$DEST" <<EOF
+#!/bin/sh
+# Generated shell-script to execute java interpreter on source.
+
+# Detect dirname and change dir to prevent class not found errors.
+if [ "\${0%/*}" != "\$0" ]; then
+        cd "\${0%/*}"
+fi
+
+# Add -J-DONLINE_JUDGE or -J-DDOMJUDGE below if you want it make easier for
+# teams to do local debugging.
+
+exec "${KOTLIN_DIR}"/kotlin -Dfile.encoding=UTF-8 -J-XX:+UseSerialGC -J-Xss${MEMSTACK}k -J-Xms${MEMLIMITJAVA}k -J-Xmx${MEMLIMITJAVA}k '$MAINCLASS' "\$@"
+EOF
+
+chmod a+x "$DEST"
+
+exit 0
+# ls -lah /opt/domjudge/judgehost/judgings/judgedaemon-0/endpoint-default/executable/compile/16/d60c77a610c73edd95d8cabb0a5a191d/build/
+total 28K
+drwxr-xr-x 2 domjudge domjudge 4.0K May 27 00:31 .
+drwxr-xr-x 6 domjudge domjudge 4.0K May 27 00:31 ..
+-rw-r--r-- 1 domjudge domjudge 2.5K May 27 00:31 DetectMain.class
+-rw-r--r-- 1 domjudge domjudge 2.1K May 27 00:31 DetectMain.java
+-rwxr-xr-x 1 domjudge domjudge   33 May 27 00:31 build
+-rwxr-xr-x 1 domjudge domjudge 4.2K May 27 00:31 run
+# docker exec -it ups-judge-judgehost bash
+sh: 4: docker: not found
+# exit
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec -it ups-judge-judgehost bash
+root@judgedaemon:/# ls -lah /chroot/domjudge/opt
+total 12K
+drwxr-xr-x 2 root root 4.0K May 15 11:23 .
+drwxr-xr-x 1 root root 4.0K May 15 11:24 ..
+root@judgedaemon:/# mkdir -p /chroot/domjudge/opt
+cp -r /opt/kotlinc /chroot/domjudge/opt/
+root@judgedaemon:/# mkdir -p /chroot/domjudge/usr/local/bin
+ln -sf /opt/kotlinc/bin/kotlinc /chroot/domjudge/usr/local/bin/kotlinc
+ln -sf /opt/kotlinc/bin/kotlin /chroot/domjudge/usr/local/bin/kotlin
+root@judgedaemon:/# chroot /chroot/domjudge /usr/local/bin/kotlinc -version
+java: error while loading shared libraries: libjli.so: cannot open shared object file: No such file or directory
+root@judgedaemon:/# # docker exec -it ups-judge-judgehost bash
+sh: 4: docker: not found
+# exit
+root@upc-judge:/opt/upc-judge/ups-judge# docker exec -it ups-judge-judgehost bash
+root@judgedaemon:/# ls -lah /chroot/domjudge/opt
+total 12K
+drwxr-xr-x 2 root root 4.0K May 15 11:23 .
+drwxr-xr-x 1 root root 4.0K May 15 11:24 ..
+root@judgedaemon:/# mkdir -p /chroot/domjudge/opt
+cp -r /opt/kotlinc /chroot/domjudge/opt/
+root@judgedaemon:/# mkdir -p /chroot/domjudge/usr/local/bin
+ln -sf /opt/kotlinc/bin/kotlinc /chroot/domjudge/usr/local/bin/kotlinc
+ln -sf /opt/kotlinc/bin/kotlin /chroot/domjudge/usr/local/bin/kotlin
+root@judgedaemon:/# chroot /chroot/domjudge /usr/local/bin/kotlinc -version
+java: error while loading shared libraries: libjli.so: cannot open shared object file: No such file or directory
+root@judgedaemon:/#^C
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/# find /chroot/domjudge -name libjli.so 2>/dev/null
+/chroot/domjudge/usr/lib/jvm/java-21-openjdk-amd64/lib/libjli.so
+root@judgedaemon:/# find / -name libjli.so 2>/dev/null
+/usr/lib/jvm/java-21-openjdk-amd64/lib/libjli.so
+/chroot/domjudge/usr/lib/jvm/java-21-openjdk-amd64/lib/libjli.so
+root@judgedaemon:/# ls -lah /usr/lib/jvm
+total 16K
+drwxr-xr-x 3 root root 4.0K May 15 11:25 .
+drwxr-xr-x 1 root root 4.0K May 15 11:25 ..
+-rw-r--r-- 1 root root 1.8K Jan 22 19:46 .java-1.21.0-openjdk-amd64.jinfo
+lrwxrwxrwx 1 root root   25 Oct  4  2023 default-java -> java-1.21.0-openjdk-amd64
+lrwxrwxrwx 1 root root   21 Jan 22 19:46 java-1.21.0-openjdk-amd64 -> java-21-openjdk-amd64
+drwxr-xr-x 9 root root 4.0K May 15 11:25 java-21-openjdk-amd64
+root@judgedaemon:/# ls -lah /chroot/domjudge/usr/lib/jvm
+total 28K
+drwxr-xr-x 1 root root 4.0K May 15 11:24 .
+drwxr-xr-x 1 root root 4.0K May 15 11:24 ..
+-rw-r--r-- 1 root root 1.8K Jan 22 19:46 .java-1.21.0-openjdk-amd64.jinfo
+lrwxrwxrwx 1 root root   25 Oct  4  2023 default-java -> java-1.21.0-openjdk-amd64
+lrwxrwxrwx 1 root root   21 Jan 22 19:46 java-1.21.0-openjdk-amd64 -> java-21-openjdk-amd64
+drwxr-xr-x 1 root root 4.0K May 15 11:24 java-21-openjdk-amd64
+root@judgedaemon:/# chroot /chroot/domjudge /bin/sh
+# ls -lah /usr/local/bin/kotlinc
+lrwxrwxrwx 1 root root 24 May 29 03:20 /usr/local/bin/kotlinc -> /opt/kotlinc/bin/kotlinc
+# readlink -f /usr/local/bin/kotlinc
+/opt/kotlinc/bin/kotlinc
+# echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/domjudge/judgehost/bin
+# which java
+java /usr/bin/java
+# -version
+java: error while loading shared libraries: libjli.so: cannot open shared object file: No such file or directory
+# which java
+/usr/bin/java
+# java -version
+java: error while loading shared libraries: libjli.so: cannot open shared object file: No such file or directory
+# exit
+root@judgedaemon:/# java -version
+openjdk version "21.0.10" 2026-01-20
+OpenJDK Runtime Environment (build 21.0.10+7-Ubuntu-124.04)
+OpenJDK 64-Bit Server VM (build 21.0.10+7-Ubuntu-124.04, mixed mode, sharing)
+root@judgedaemon:/# java -version
+openjdk version "21.0.10" 2026-01-20
+OpenJDK Runtime Environment (build 21.0.10+7-Ubuntu-124.04)
+OpenJDK 64-Bit Server VM (build 21.0.10+7-Ubuntu-124.04, mixed mode, sharing)
+root@judgedaemon:/# file /opt/kotlinc/bin/kotlinc
+bash: file: command not found
+root@judgedaemon:/# head -20 /opt/kotlinc/bin/kotlinc
+#!/usr/bin/env bash
+
+# Based on scalac from the Scala distribution
+# Copyright 2002-2011, LAMP/EPFL
+# Copyright 2010-2021 JetBrains s.r.o. and Kotlin Programming Language contributors.
+# Use of this source code is governed by the Apache 2.0 license that can be found in the license/LICENSE.txt file.
+
+cygwin=false;
+case "`uname`" in
+    CYGWIN*) cygwin=true ;;
+esac
+
+# Based on findScalaHome() from scalac script
+findKotlinHome() {
+    local source="${BASH_SOURCE[0]}"
+    while [ -h "$source" ] ; do
+        local linked="$(readlink "$source")"
+        local dir="$(cd -P $(dirname "$source") && cd -P $(dirname "$linked") && pwd)"
+        source="$dir/$(basename "$linked")"
+    done
+root@judgedaemon:/# cp -r /opt/kotlinc /chroot/domjudge/opt/
+root@judgedaemon:/# #!/usr/bin/env bash
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/# ls -l /chroot/domjudge/usr/bin/java
+lrwxrwxrwx 1 root root 22 Jan 22 19:46 /chroot/domjudge/usr/bin/java -> /etc/alternatives/java
+root@judgedaemon:/# readlink -f /chroot/domjudge/usr/bin/java
+/usr/lib/jvm/java-21-openjdk-amd64/bin/java
+root@judgedaemon:/# ls -l $(readlink -f /chroot/domjudge/usr/bin/java)
+-rwxr-xr-x 1 root root 14456 Jan 22 19:46 /usr/lib/jvm/java-21-openjdk-amd64/bin/java
+root@judgedaemon:/# ldd /usr/bin/java
+        linux-vdso.so.1 (0x000079d5e2bcb000)
+        libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x000079d5e2b9f000)
+        libjli.so => not found
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000079d5e298d000)
+        /lib64/ld-linux-x86-64.so.2 (0x000079d5e2bcd000)
+root@judgedaemon:/# chroot /chroot/domjudge ldd /usr/bin/java
+        linux-vdso.so.1 (0x00007231ac95a000)
+        libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007231ac92f000)
+        libjli.so => not found
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007231ac71d000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007231ac95c000)
+root@judgedaemon:/# ldd /chroot/domjudge/usr/bin/java
+        linux-vdso.so.1 (0x000070eff56f5000)
+        libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x000070eff56c9000)
+        libjli.so => not found
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000070eff54b7000)
+        /lib64/ld-linux-x86-64.so.2 (0x000070eff56f7000)
+root@judgedaemon:/# ls -lah /usr/lib/jvm/java-21-openjdk-amd64/lib
+total 149M
+drwxr-xr-x 5 root root 4.0K May 15 11:25 .
+drwxr-xr-x 9 root root 4.0K May 15 11:25 ..
+-rw-r--r-- 1 root root  76K Jan 22 19:46 classlist
+-rw-r--r-- 1 root root  11M Jan 22 19:46 ct.sym
+-rw-r--r-- 1 root root   63 Jan 22 19:46 jar.binfmt
+-rwxr-xr-x 1 root root  15K Jan 22 19:46 jexec
+drwxr-xr-x 2 root root 4.0K May 15 11:25 jfr
+-rw-r--r-- 1 root root 108K Jan 22 19:46 jrt-fs.jar
+-rwxr-xr-x 1 root root  19K Jan 22 19:46 jspawnhelper
+lrwxrwxrwx 1 root root   34 Jan 22 19:46 jvm.cfg -> /etc/java-21-openjdk/jvm-amd64.cfg
+-rw-r--r-- 1 root root  278 Jan 22 19:46 jvm.cfg-default
+-rw-r--r-- 1 root root  17K Jan 22 19:46 libattach.so
+-rw-r--r-- 1 root root 875K Jan 22 19:46 libawt.so
+-rw-r--r-- 1 root root  46K Jan 22 19:46 libawt_headless.so
+-rw-r--r-- 1 root root  32K Jan 22 19:46 libdt_socket.so
+-rw-r--r-- 1 root root  17K Jan 22 19:46 libextnet.so
+-rw-r--r-- 1 root root  71K Jan 22 19:46 libfontmanager.so
+-rw-r--r-- 1 root root  54K Jan 22 19:46 libinstrument.so
+-rw-r--r-- 1 root root  50K Jan 22 19:46 libj2gss.so
+-rw-r--r-- 1 root root  21K Jan 22 19:46 libj2pcsc.so
+-rw-r--r-- 1 root root  96K Jan 22 19:46 libj2pkcs11.so
+-rw-r--r-- 1 root root  16K Jan 22 19:46 libjaas.so
+-rw-r--r-- 1 root root 178K Jan 22 19:46 libjava.so
+-rw-r--r-- 1 root root  54K Jan 22 19:46 libjavajpeg.so
+-rw-r--r-- 1 root root 296K Jan 22 19:46 libjdwp.so
+-rw-r--r-- 1 root root  39K Jan 22 19:46 libjimage.so
+-rw-r--r-- 1 root root  77K Jan 22 19:46 libjli.so
+-rw-r--r-- 1 root root  17K Jan 22 19:46 libjsig.so
+-rw-r--r-- 1 root root  84K Jan 22 19:46 libjsound.so
+-rw-r--r-- 1 root root 851K Jan 22 19:46 libjsvml.so
+-rw-r--r-- 1 root root  26K Jan 22 19:46 liblcms.so
+-rw-r--r-- 1 root root  17K Jan 22 19:46 lible.so
+-rw-r--r-- 1 root root  25K Jan 22 19:46 libmanagement.so
+-rw-r--r-- 1 root root  16K Jan 22 19:46 libmanagement_agent.so
+-rw-r--r-- 1 root root  37K Jan 22 19:46 libmanagement_ext.so
+-rw-r--r-- 1 root root 589K Jan 22 19:46 libmlib_image.so
+-rw-r--r-- 1 root root  65K Jan 22 19:46 libnet.so
+-rw-r--r-- 1 root root 108K Jan 22 19:46 libnio.so
+-rw-r--r-- 1 root root  16K Jan 22 19:46 libprefs.so
+-rw-r--r-- 1 root root  15K Jan 22 19:46 librmi.so
+-rw-r--r-- 1 root root  74K Jan 22 19:46 libsaproc.so
+-rw-r--r-- 1 root root  36K Jan 22 19:46 libsctp.so
+-rw-r--r-- 1 root root  15K Jan 22 19:46 libsyslookup.so
+-rw-r--r-- 1 root root  63K Jan 22 19:46 libverify.so
+-rw-r--r-- 1 root root  45K Jan 22 19:46 libzip.so
+-rw-r--r-- 1 root root 135M Jan 22 19:46 modules
+lrwxrwxrwx 1 root root   41 Jan 22 19:46 psfont.properties.ja -> /etc/java-21-openjdk/psfont.properties.ja
+lrwxrwxrwx 1 root root   41 Jan 22 19:46 psfontj2d.properties -> /etc/java-21-openjdk/psfontj2d.properties
+drwxr-xr-x 2 root root 4.0K May 15 11:25 security
+drwxr-xr-x 2 root root 4.0K May 15 11:25 server
+lrwxrwxrwx 1 root root   24 Jan 22 19:46 src.zip -> ../../openjdk-21/src.zip
+-rw-r--r-- 1 root root 101K Jan 22 19:46 tzdb.dat
+root@judgedaemon:/# ls -lah /usr/lib/jvm/java-21-openjdk-amd64/lib/server
+total 54M
+drwxr-xr-x 2 root root 4.0K May 15 11:25 .
+drwxr-xr-x 5 root root 4.0K May 15 11:25 ..
+-rw-r--r-- 1 root root  14M Jan 22 19:46 classes.jsa
+-rw-r--r-- 1 root root  15M Jan 22 19:46 classes_nocoops.jsa
+-rw-r--r-- 1 root root  17K Jan 22 19:46 libjsig.so
+-rw-r--r-- 1 root root  26M Jan 22 19:46 libjvm.so
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/# docker exec -it ups-judge-judgehost bash
+bash: docker: command not found
+root@judgedaemon:/# docker exec -it ups-judge-judgehost bash
+bash: docker: command not found
+root@judgedaemon:/# cat /etc/ld.so.conf
+include /etc/ld.so.conf.d/*.conf
+
+root@judgedaemon:/# cat /etc/ld.so.conf.d/*.conf
+# libc default configuration
+/usr/local/lib
+# Multiarch support
+/usr/local/lib/x86_64-linux-gnu
+/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu
+root@judgedaemon:/# ldconfig -p | grep libjli
+root@judgedaemon:/# chroot /chroot/domjudge /bin/sh
+# cat /etc/ld.so.conf
+include /etc/ld.so.conf.d/*.conf
+
+# cat /etc/ld.so.conf.d/*.conf
+# libc default configuration
+/usr/local/lib
+# Multiarch support
+/usr/local/lib/x86_64-linux-gnu
+/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu
+# ldconfig -p | grep libjli
+# apt update
+Hit:1 http://us.archive.ubuntu.com/ubuntu noble InRelease
+Get:2 http://us.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [2049 kB]
+Get:5 http://us.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [360 kB]
+Get:6 http://us.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1694 kB]
+Get:7 http://us.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [330 kB]
+Get:8 http://us.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1704 kB]
+Get:9 http://us.archive.ubuntu.com/ubuntu noble-security/main Translation-en [268 kB]
+Get:10 http://us.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1192 kB]
+Get:11 http://us.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [230 kB]
+Fetched 8081 kB in 4s (1907 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+5 packages can be upgraded. Run 'apt list --upgradable' to see them.
+# readelf -d /usr/lib/jvm/java-21-openjdk-amd64/bin/java | grep PATH
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+E: Unsupported file /usr/lib/jvm/java-21-openjdk-amd64/bin/java given on commandline
+# readelf -d /usr/lib/jvm/java-21-openjdk-amd64/bin/java | grep PATH
+ 0x000000000000000f (RPATH)              Library rpath: [$ORIGIN:$ORIGIN/../lib]
+# docker exec -it ups-judge-judgehost bash
+/bin/sh: 7: docker: not found
+# exit
+root@judgedaemon:/# docker exec -it ups-judge-judgehost bash
+bash: docker: command not found
+root@judgedaemon:/# docker exec -it ups-judge-judgehost bash
+bash: docker: command not found
+root@judgedaemon:/# ls -l /chroot/domjudge/etc/ld.so.conf*
+-rw-r--r-- 1 root root   34 Aug  2  2022 /chroot/domjudge/etc/ld.so.conf
+
+/chroot/domjudge/etc/ld.so.conf.d:
+total 8
+-rw-r--r-- 1 root root  44 Aug  2  2022 libc.conf
+-rw-r--r-- 1 root root 100 Mar 30  2024 x86_64-linux-gnu.conf
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/# docker exec -it ups-judge-judgehost bash
+bash: docker: command not found
+root@judgedaemon:/# ls -l /chroot/domjudge/etc/ld.so.conf*
+-rw-r--r-- 1 root root   34 Aug  2  2022 /chroot/domjudge/etc/ld.so.conf
+
+/chroot/domjudge/etc/ld.so.conf.d:
+total 8
+-rw-r--r-- 1 root root  44 Aug  2  2022 libc.conf
+-rw-r--r-- 1 root root 100 Mar 30  2024 x86_64-linux-gnu.conf
+root@judgedaemon:/# find /chroot/domjudge/etc/ld.so.conf.d -type f -exec echo "==== {} ====" \; -exec cat {} \;
+==== /chroot/domjudge/etc/ld.so.conf.d/x86_64-linux-gnu.conf ====
+# Multiarch support
+/usr/local/lib/x86_64-linux-gnu
+/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu
+==== /chroot/domjudge/etc/ld.so.conf.d/libc.conf ====
+# libc default configuration
+/usr/local/lib
+root@judgedaemon:/# chroot /chroot/domjudge /bin/sh -c 'echo "/usr/lib/jvm/java-21-openjdk-amd64/lib" > /etc/ld.so.conf.d/java.conf && ldconfig'
+root@judgedaemon:/# chroot /chroot/domjudge /bin/sh -c 'echo "/usr/lib/jvm/java-21-openjdk-amd64/lib" > /etc/ld.so.conf.d/java.conf && ldconfig'
+root@judgedaemon:/# chroot /chroot/domjudge ldconfig -p | grep libjli
+        libjli.so (libc6,x86-64) => /usr/lib/jvm/java-21-openjdk-amd64/lib/libjli.so
+root@judgedaemon:/# chroot /chroot/domjudge java -version
+openjdk version "21.0.10" 2026-01-20
+OpenJDK Runtime Environment (build 21.0.10+7-Ubuntu-124.04)
+OpenJDK 64-Bit Server VM (build 21.0.10+7-Ubuntu-124.04, mixed mode, sharing)
+root@judgedaemon:/# chroot /chroot/domjudge /usr/local/bin/kotlinc -version
+info: kotlinc-jvm 1.9.25 (JRE 21.0.10+7-Ubuntu-124.04)
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/#
+root@judgedaemon:/# chroot /chroot/domjudge /usr/local/bin/kotlinc -version
+info: kotlinc-jvm 1.9.25 (JRE 21.0.10+7-Ubuntu-124.04)
+root@judgedaemon:/# root@judgedaemon:/# chroot /chroot/domjudge /usr/local/bin/kotlinc -version
+info: kotlinc-jvm 1.9.25 (JRE 21.0.10+7-Ubuntu-124.04)
+root@judgedaemon:/#
+bash: root@judgedaemon:/#: No such file or directory
+bash: syntax error near unexpected token `('
+bash: root@judgedaemon:/#: No such file or directory
+root@judgedaemon:/# Errores internos
+filter table
+ID
+jid
+description
+time
+status
+1               low on disk space on judgedaemon-0      2026-05-27 00:17:27     open
+^C
+root@judgedaemon:/# df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+overlay                             14G  9.0G  4.1G  70% /
+tmpfs                               64M     0   64M   0% /dev
+shm                                 64M     0   64M   0% /dev/shm
+/dev/mapper/ubuntu--vg-ubuntu--lv   14G  9.0G  4.1G  70% /usr/sbin/docker-init
+tmpfs                              3.7G     0  3.7G   0% /run
+tmpfs                              3.7G     0  3.7G   0% /run/lock
+root@judgedaemon:/# docker system df
+bash: docker: command not found
+root@judgedaemon:/#

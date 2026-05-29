@@ -1,0 +1,85 @@
+services:
+
+  mariadb:
+    container_name: ups-judge-db
+    image: docker.io/mariadb
+    restart: unless-stopped
+
+    environment:
+      - MYSQL_ROOT_PASSWORD=UpsJdg2025Root
+      - MYSQL_USER=upsjudge
+      - MYSQL_PASSWORD=UpsJdg2025App
+      - MYSQL_DATABASE=upsjudge
+
+    command: >
+      --max-connections=1000
+      --max-allowed-packet=512M
+      --innodb_snapshot_isolation=OFF
+
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  domjudge:
+    container_name: ups-judge-app
+    image: astlimbark/ups-judge:latest
+    restart: unless-stopped
+
+    hostname: domjudge
+
+    privileged: true
+
+    volumes:
+      - domjudge_etc:/opt/domjudge/domserver/etc
+
+    ports:
+      - "8080:80"
+
+    environment:
+      - CONTAINER_TIMEZONE=America/La_Paz
+
+      - MYSQL_HOST=mariadb
+      - MYSQL_USER=upsjudge
+      - MYSQL_PASSWORD=UpsJdg2025App
+      - MYSQL_DATABASE=upsjudge
+      - MYSQL_ROOT_PASSWORD=UpsJdg2025Root
+
+      - DJ_DB_INSTALL_BARE=1
+
+    depends_on:
+      - mariadb
+
+  judgehost:
+    container_name: ups-judge-judgehost
+    build:
+      context: .
+      dockerfile: Dockerfile.judgehost
+    restart: unless-stopped
+
+    init: true
+
+    hostname: judgedaemon
+
+    privileged: true
+
+    cgroup: host
+
+    tmpfs:
+      - /run
+      - /run/lock
+
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+
+    environment:
+      - CONTAINER_TIMEZONE=America/La_Paz
+      - DAEMON_ID=0
+      - JUDGEDAEMON_PASSWORD=giFw9E4byB0NXV7MSUSJ8oLsuwf8QsZB
+      - DOMSERVER_BASEURL=http://domjudge/
+      - CGROUP_MEMORY_LIMIT=0
+
+    depends_on:
+      - domjudge
+
+volumes:
+  mariadb_data:
+  domjudge_etc:

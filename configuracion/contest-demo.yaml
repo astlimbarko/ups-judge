@@ -4,7 +4,7 @@ name: "UPC Judge UTEPSA - test"
 
 short_name: "test1"
 
-start_time: "2026-05-21T19:45:00-04:00"
+start_time: "2026-05-25T19:45:00-04:00"
 
 duration: "744:00:00"   # 31 días exactos
 
@@ -12,6 +12,6 @@ scoreboard_freeze_duration: "0:00:00"
 
 penalty_time: 20
 
-activate_time: "2026-05-21T19:45:00-04:00"
+activate_time: "2026-05-25T19:45:00-04:00"
 
-deactivate_time: "2026-06-21T19:45:00-04:00"
+deactivate_time: "2026-06-25T19:45:00-04:00"

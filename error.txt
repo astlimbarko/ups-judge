@@ -1,0 +1,484 @@
+Sí, a estas alturas ya tenemos evidencia suficiente para concluir que **la corrección definitiva debe hacerse en tu proyecto fuente (Linux), reconstruir la imagen Docker y volver a publicarla en Docker Hub**.
+
+Todo lo que hicimos en el VPS fue diagnóstico y pruebas manuales dentro del contenedor. Esos cambios desaparecerán cuando:
+
+* recrees el contenedor,
+* hagas `docker compose down && up`,
+* actualices la imagen,
+* o hagas un nuevo `docker pull`.
+
+---
+
+# REPORTE COMPLETO DE INVESTIGACIÓN
+
+## 1. Problema original detectado
+
+Los envíos Kotlin fallaban con:
+
+```text
+Compilation unsuccessful
+
+realpath: '': No such file or directory
+/compile-script/run: 61: ./kotlinc: not found
+
+exit-code: 127
+```
+
+En DOMjudge:
+
+```text
+compiler-error
+```
+
+para todos los envíos Kotlin.
+
+---
+
+# 2. Verificación del script de compilación
+
+Inspeccionamos:
+
+```bash
+/opt/domjudge/judgehost/judgings/.../compile-script/run
+```
+
+y encontramos:
+
+```sh
+KOTLIN_DIR="$(dirname "$(realpath "$(command -v kotlinc)")")"
+```
+
+y posteriormente:
+
+```sh
+"${KOTLIN_DIR}"/kotlinc
+```
+
+---
+
+# 3. Conclusión inicial
+
+El error:
+
+```text
+realpath: '': No such file or directory
+```
+
+indica que:
+
+```bash
+command -v kotlinc
+```
+
+no devuelve nada dentro del entorno de compilación.
+
+Por tanto:
+
+```bash
+KOTLIN_DIR=""
+```
+
+y luego:
+
+```bash
+./kotlinc
+```
+
+produce:
+
+```text
+./kotlinc: not found
+```
+
+---
+
+# 4. Verificación de Kotlin en el contenedor principal
+
+Tu Dockerfile instala Kotlin correctamente:
+
+```dockerfile
+wget kotlin-compiler-1.9.25.zip
+unzip
+ln -s /opt/kotlinc/bin/kotlinc /usr/local/bin/kotlinc
+ln -s /opt/kotlinc/bin/kotlin /usr/local/bin/kotlin
+```
+
+Por tanto:
+
+```bash
+which kotlinc
+```
+
+funciona en el contenedor principal.
+
+---
+
+# 5. Descubrimiento importante
+
+DOMjudge NO compila dentro del contenedor principal.
+
+Compila dentro del:
+
+```text
+/chroot/domjudge
+```
+
+---
+
+# 6. Inspección del chroot
+
+Encontramos que:
+
+```bash
+chroot /chroot/domjudge
+```
+
+NO tenía Kotlin.
+
+Por eso:
+
+```bash
+command -v kotlinc
+```
+
+fallaba.
+
+---
+
+# 7. Prueba manual
+
+Copiamos Kotlin:
+
+```bash
+cp -r /opt/kotlinc /chroot/domjudge/opt/
+```
+
+Creamos enlaces:
+
+```bash
+ln -sf /opt/kotlinc/bin/kotlinc /chroot/domjudge/usr/local/bin/kotlinc
+
+ln -sf /opt/kotlinc/bin/kotlin /chroot/domjudge/usr/local/bin/kotlin
+```
+
+---
+
+# 8. Nuevo error encontrado
+
+Después apareció:
+
+```text
+java: error while loading shared libraries:
+libjli.so: cannot open shared object file
+```
+
+---
+
+# 9. Diagnóstico de Java
+
+Verificamos:
+
+```bash
+find /chroot/domjudge -name libjli.so
+```
+
+Resultado:
+
+```text
+/chroot/domjudge/usr/lib/jvm/java-21-openjdk-amd64/lib/libjli.so
+```
+
+El archivo EXISTE.
+
+---
+
+# 10. Diagnóstico del linker dinámico
+
+Ejecutamos:
+
+```bash
+chroot /chroot/domjudge ldd /usr/bin/java
+```
+
+Resultado:
+
+```text
+libjli.so => not found
+```
+
+---
+
+# 11. Causa raíz
+
+El directorio:
+
+```text
+/usr/lib/jvm/java-21-openjdk-amd64/lib
+```
+
+NO estaba registrado en:
+
+```bash
+ldconfig
+```
+
+dentro del chroot.
+
+---
+
+# 12. Corrección manual realizada
+
+Creamos:
+
+```bash
+/chroot/domjudge/etc/ld.so.conf.d/java.conf
+```
+
+con:
+
+```text
+/usr/lib/jvm/java-21-openjdk-amd64/lib
+```
+
+y ejecutamos:
+
+```bash
+ldconfig
+```
+
+---
+
+# 13. Resultado
+
+Ahora:
+
+```bash
+chroot /chroot/domjudge java -version
+```
+
+funciona:
+
+```text
+openjdk version "21.0.10"
+```
+
+---
+
+# 14. Verificación final de Kotlin
+
+Ejecutamos:
+
+```bash
+chroot /chroot/domjudge /usr/local/bin/kotlinc -version
+```
+
+Resultado:
+
+```text
+kotlinc-jvm 1.9.25
+```
+
+ÉXITO.
+
+---
+
+# 15. Conclusión técnica
+
+Demostramos que:
+
+### Antes
+
+```text
+Kotlin NO funcionaba en el chroot.
+```
+
+### Después
+
+```text
+Kotlin SÍ funciona en el chroot.
+```
+
+---
+
+# 16. Estado actual
+
+Aún NO sabemos si DOMjudge ya puede juzgar Kotlin porque todavía no enviamos una nueva solución después de la corrección.
+
+Sin embargo:
+
+```text
+El error original ya está resuelto.
+```
+
+porque:
+
+```bash
+kotlinc -version
+```
+
+funciona dentro del chroot.
+
+---
+
+# 17. Problema secundario encontrado
+
+Existe un error abierto:
+
+```text
+low on disk space on judgedaemon-0
+```
+
+---
+
+### Evidencia
+
+DOMjudge reporta:
+
+```text
+Low on disk space: 0.98GB free
+```
+
+---
+
+### Pero el sistema actualmente muestra
+
+```bash
+df -h
+```
+
+```text
+Avail 4.1G
+```
+
+---
+
+### Conclusión
+
+Probablemente es un error antiguo que quedó abierto cuando el disco tenía menos de 1 GB libre.
+
+No parece relacionado con Kotlin.
+
+---
+
+# 18. Qué debe modificarse en el proyecto Linux
+
+Tu Dockerfile actual:
+
+```dockerfile
+RUN mv /scripts/start.sh /scripts/start-original.sh && \
+    printf '...'
+```
+
+solamente copia:
+
+```dockerfile
+cp /opt/kotlinc/lib/*.jar
+```
+
+al chroot.
+
+Eso NO es suficiente.
+
+---
+
+# 19. Lo que debe hacer la imagen definitiva
+
+Durante el arranque debe:
+
+### 1.
+
+Copiar Kotlin completo
+
+```bash
+cp -r /opt/kotlinc /chroot/domjudge/opt/
+```
+
+---
+
+### 2.
+
+Crear enlaces
+
+```bash
+mkdir -p /chroot/domjudge/usr/local/bin
+
+ln -sf /opt/kotlinc/bin/kotlinc \
+/chroot/domjudge/usr/local/bin/kotlinc
+
+ln -sf /opt/kotlinc/bin/kotlin \
+/chroot/domjudge/usr/local/bin/kotlin
+```
+
+---
+
+### 3.
+
+Registrar Java
+
+Crear:
+
+```bash
+/chroot/domjudge/etc/ld.so.conf.d/java.conf
+```
+
+contenido:
+
+```text
+/usr/lib/jvm/java-21-openjdk-amd64/lib
+```
+
+---
+
+### 4.
+
+Ejecutar:
+
+```bash
+chroot /chroot/domjudge ldconfig
+```
+
+---
+
+# 20. Próximo paso recomendado en Linux
+
+Cuando regreses a tu máquina de desarrollo:
+
+1. Abrir:
+
+```text
+Dockerfile.judgehost
+```
+
+2. Modificar el wrapper de `start.sh`.
+
+3. Reconstruir:
+
+```bash
+docker build -t astlimbark/ups-judgehost:latest -f Dockerfile.judgehost .
+```
+
+4. Probar localmente.
+
+5. Publicar:
+
+```bash
+docker push astlimbark/ups-judgehost:latest
+```
+
+6. En el VPS:
+
+```bash
+docker pull astlimbark/ups-judgehost:latest
+docker compose down
+docker compose up -d
+```
+
+---
+
+## Mi conclusión
+
+La investigación ya identificó la causa principal:
+
+**Kotlin estaba instalado en el contenedor, pero no en el chroot que usa DOMjudge para compilar. Además, el chroot no tenía configurado el cargador dinámico para localizar `libjli.so` de Java.**
+
+La solución permanente debe incorporarse a la imagen `ups-judgehost` y reconstruirse en tu entorno de desarrollo Linux antes de volver a desplegarla.
