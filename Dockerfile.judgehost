@@ -13,14 +13,25 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Crear wrapper del start.sh que copia Kotlin al chroot en background
+# Crear wrapper del start.sh que:
+# 1. Espera a que el chroot exista
+# 2. Copia Kotlin al chroot
+# 3. Arregla libjli.so en el linker del chroot (fix para Java/Kotlin)
 RUN mv /scripts/start.sh /scripts/start-original.sh && \
     printf '#!/bin/bash\n\
-# Copiar Kotlin al chroot en background (espera a que exista)\n\
+# Configurar chroot en background (espera a que exista)\n\
 (\n\
   while [ ! -d /chroot/domjudge/usr/lib/jvm/java-21-openjdk-amd64/lib ]; do sleep 2; done\n\
-  cp /opt/kotlinc/lib/*.jar /chroot/domjudge/usr/lib/jvm/java-21-openjdk-amd64/lib/\n\
-  chmod 644 /chroot/domjudge/usr/lib/jvm/java-21-openjdk-amd64/lib/kotlin-*.jar\n\
+  \n\
+  # Copiar Kotlin al chroot\n\
+  cp -r /opt/kotlinc /chroot/domjudge/opt/\n\
+  mkdir -p /chroot/domjudge/usr/local/bin\n\
+  ln -sf /opt/kotlinc/bin/kotlinc /chroot/domjudge/usr/local/bin/kotlinc\n\
+  ln -sf /opt/kotlinc/bin/kotlin /chroot/domjudge/usr/local/bin/kotlin\n\
+  \n\
+  # Fix libjli.so: agregar Java lib al linker path del chroot\n\
+  echo "/usr/lib/jvm/java-21-openjdk-amd64/lib" > /chroot/domjudge/etc/ld.so.conf.d/java.conf\n\
+  chroot /chroot/domjudge ldconfig\n\
 ) &\n\
 # Ejecutar el script original\n\
 exec /scripts/start-original.sh "$@"\n' > /scripts/start.sh && \
