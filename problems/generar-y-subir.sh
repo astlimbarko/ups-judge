@@ -4,9 +4,9 @@
 # Esto genera los ZIPs con rutas Linux (forward slash) y los sube al contest.
 
 API_URL="http://192.168.42.130/api/v4"
-CID="test1"
+CID="rally_1"
 USER="admin"
-PASS="5Vzz6HPmTMFD7ZP0"
+PASS="CTtxu9vA5Rh35h8-"
 
 # Carpeta donde se generaran los ZIPs
 ZIP_DIR="./zips"
