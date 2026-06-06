@@ -13,26 +13,27 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Crear wrapper del start.sh que:
-# 1. Espera a que el chroot exista
-# 2. Copia Kotlin al chroot
-# 3. Arregla libjli.so en el linker del chroot (fix para Java/Kotlin)
+# Wrapper de start.sh: configura Kotlin en el chroot al arrancar
 RUN mv /scripts/start.sh /scripts/start-original.sh && \
     printf '#!/bin/bash\n\
-# Configurar chroot en background (espera a que exista)\n\
 (\n\
   while [ ! -d /chroot/domjudge/usr/lib/jvm/java-21-openjdk-amd64/lib ]; do sleep 2; done\n\
   \n\
-  # Copiar Kotlin al chroot\n\
-  cp -r /opt/kotlinc /chroot/domjudge/opt/\n\
-  mkdir -p /chroot/domjudge/usr/local/bin\n\
-  ln -sf /opt/kotlinc/bin/kotlinc /chroot/domjudge/usr/local/bin/kotlinc\n\
-  ln -sf /opt/kotlinc/bin/kotlin /chroot/domjudge/usr/local/bin/kotlin\n\
+  # Copiar Kotlin a /usr/lib/kotlinc en el chroot (usr si se monta en el sandbox)\n\
+  cp -r /opt/kotlinc /chroot/domjudge/usr/lib/kotlinc\n\
   \n\
-  # Fix libjli.so: agregar Java lib al linker path del chroot\n\
+  # Arreglar shebang: env no disponible en el sandbox de DOMjudge\n\
+  sed -i "s|#!/usr/bin/env bash|#!/usr/bin/bash|g" /chroot/domjudge/usr/lib/kotlinc/bin/kotlinc\n\
+  sed -i "s|#!/usr/bin/env bash|#!/usr/bin/bash|g" /chroot/domjudge/usr/lib/kotlinc/bin/kotlin\n\
+  \n\
+  # Symlinks en /usr/local/bin del chroot\n\
+  mkdir -p /chroot/domjudge/usr/local/bin\n\
+  ln -sf /usr/lib/kotlinc/bin/kotlinc /chroot/domjudge/usr/local/bin/kotlinc\n\
+  ln -sf /usr/lib/kotlinc/bin/kotlin /chroot/domjudge/usr/local/bin/kotlin\n\
+  \n\
+  # Fix libjli.so: registrar Java en el linker del chroot\n\
   echo "/usr/lib/jvm/java-21-openjdk-amd64/lib" > /chroot/domjudge/etc/ld.so.conf.d/java.conf\n\
   chroot /chroot/domjudge ldconfig\n\
 ) &\n\
-# Ejecutar el script original\n\
 exec /scripts/start-original.sh "$@"\n' > /scripts/start.sh && \
     chmod +x /scripts/start.sh
