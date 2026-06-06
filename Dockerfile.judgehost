@@ -2,9 +2,9 @@ FROM domjudge/judgehost:9.0.0
 
 USER root
 
-# Instalar Kotlin
+# Instalar Kotlin, Node.js y Go
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends unzip wget && \
+    apt-get install -y --no-install-recommends unzip wget nodejs golang-go && \
     wget -q https://github.com/JetBrains/kotlin/releases/download/v1.9.25/kotlin-compiler-1.9.25.zip -O /tmp/kotlin.zip && \
     unzip -q /tmp/kotlin.zip -d /opt && \
     ln -s /opt/kotlinc/bin/kotlinc /usr/local/bin/kotlinc && \
@@ -34,6 +34,14 @@ RUN mv /scripts/start.sh /scripts/start-original.sh && \
   # Fix libjli.so: registrar Java en el linker del chroot\n\
   echo "/usr/lib/jvm/java-21-openjdk-amd64/lib" > /chroot/domjudge/etc/ld.so.conf.d/java.conf\n\
   chroot /chroot/domjudge ldconfig\n\
+  \n\
+  # Node.js: copiar binario y dependencias al chroot\n\
+  cp /usr/bin/node /chroot/domjudge/usr/bin/node 2>/dev/null || true\n\
+  cp /usr/bin/nodejs /chroot/domjudge/usr/bin/nodejs 2>/dev/null || true\n\
+  \n\
+  # Go: copiar binario al chroot\n\
+  cp /usr/bin/go /chroot/domjudge/usr/bin/go 2>/dev/null || true\n\
+  cp /usr/local/go/bin/go /chroot/domjudge/usr/bin/go 2>/dev/null || true\n\
 ) &\n\
 exec /scripts/start-original.sh "$@"\n' > /scripts/start.sh && \
     chmod +x /scripts/start.sh
