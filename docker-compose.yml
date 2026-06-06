@@ -71,7 +71,7 @@ services:
     environment:
       - CONTAINER_TIMEZONE=America/La_Paz
       - DAEMON_ID=0
-      - JUDGEDAEMON_PASSWORD=zyjH+VAQTR4Bw+YP7WiCctPsPMcbfGAS
+      - JUDGEDAEMON_PASSWORD=0HODBF2whwg4raB74V42NgQ/dO65MXQJ
       - DOMSERVER_BASEURL=http://domjudge/
       - CGROUP_MEMORY_LIMIT=0
 
