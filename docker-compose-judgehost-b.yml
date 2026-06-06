@@ -1,0 +1,28 @@
+services:
+
+  judgehost:
+    container_name: ups-judge-judgehost-2
+    image: astlimbark/ups-judgehost:latest
+    restart: unless-stopped
+
+    init: true
+
+    hostname: judgedaemon2
+
+    privileged: true
+
+    cgroup: host
+
+    tmpfs:
+      - /run
+      - /run/lock
+
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+
+    environment:
+      - CONTAINER_TIMEZONE=America/La_Paz
+      - DAEMON_ID=1
+      - JUDGEDAEMON_PASSWORD=0HODBF2whwg4raB74V42NgQ/dO65MXQJ
+      - DOMSERVER_BASEURL=http://192.168.42.130/
+      - CGROUP_MEMORY_LIMIT=0
