@@ -7,9 +7,9 @@
   },
   {
     "id": "2",
-    "name": "Recursivitis",
+    "name": "NullPointers",
     "group_ids": ["1"],
-    "organization_id": "UDABOL"
+    "organization_id": "UTEPSA"
   },
   {
     "id": "3",
@@ -19,15 +19,15 @@
   },
   {
     "id": "4",
-    "name": "Bufferosis",
+    "name": "Runtime Terror",
     "group_ids": ["1"],
-    "organization_id": "EMI"
+    "organization_id": "UDABOL"
   },
   {
     "id": "5",
-    "name": "Compilax",
+    "name": "Segfault",
     "group_ids": ["1"],
-    "organization_id": "UTEPSA"
+    "organization_id": "EMI"
   },
   {
     "id": "6",
@@ -46,17 +46,5 @@
     "name": "SOSpechosos",
     "group_ids": ["1"],
     "organization_id": "UDABOL"
-  },
-  {
-    "id": "9",
-    "name": "Javacetamol",
-    "group_ids": ["1"],
-    "organization_id": "EMI"
-  },
-  {
-    "id": "10",
-    "name": "CovByte19",
-    "group_ids": ["1"],
-    "organization_id": "UTEPSA"
   }
 ]

@@ -5,12 +5,12 @@
   team_id: "1"
   name: ByteForce
 
-- id: recursivitis
-  username: recursivitis
-  password: recursivitis2026
+- id: nullpointers
+  username: nullpointers
+  password: nullpointers2026
   type: team
   team_id: "2"
-  name: Recursivitis
+  name: NullPointers
 
 - id: stackoverflow
   username: stackoverflow
@@ -19,19 +19,19 @@
   team_id: "3"
   name: StackOverflow
 
-- id: bufferosis
-  username: bufferosis
-  password: bufferosis2026
+- id: runtimeterror
+  username: runtimeterror
+  password: runtimeterror2026
   type: team
   team_id: "4"
-  name: Bufferosis
+  name: Runtime Terror
 
-- id: compilax
-  username: compilax
-  password: compilax2026
+- id: segfault
+  username: segfault
+  password: segfault2026
   type: team
   team_id: "5"
-  name: Compilax
+  name: Segfault
 
 - id: ctrl_c_ctrl_v
   username: ctrl_c_ctrl_v
@@ -53,17 +53,3 @@
   type: team
   team_id: "8"
   name: SOSpechosos
-
-- id: javacetamol
-  username: javacetamol
-  password: javacetamol2026
-  type: team
-  team_id: "9"
-  name: Javacetamol
-
-- id: covbyte19
-  username: covbyte19
-  password: covbyte192026
-  type: team
-  team_id: "10"
-  name: CovByte19
