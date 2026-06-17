@@ -1,0 +1,67 @@
+A. Koshary
+
+Límite de tiempo por prueba: 1 segundo
+Límite de memoria por prueba: 256 megabytes
+
+El Koshary es un plato tradicional de Egipto muy popular por su mezcla de arroz, pasta y legumbres. Carlos ha encontrado un delicioso plato de Koshary y quiere llegar hasta él.
+
+Carlos se encuentra en las coordenadas (0, 0) y quiere llegar a un plato de Koshary ubicado en (x, y).
+
+Para llegar, Carlos da pasos largos. Desde cualquier punto (a, b), un paso largo lo mueve a:
+
+(a + 2, b) o (a, b + 2)
+
+Sin embargo, Carlos puede realizar como máximo un paso corto durante todo su recorrido. Un paso corto lo mueve a:
+
+(a + 1, b) o (a, b + 1)
+
+¿Puede Carlos llegar exactamente a las coordenadas (x, y) donde se encuentra el plato de Koshary?
+
+Entrada
+
+La primera línea contiene un entero t (1 ≤ t ≤ 100) — el número de casos de prueba.
+
+Cada caso de prueba contiene dos enteros x e y (1 ≤ x, y ≤ 10) — las coordenadas del plato de Koshary.
+
+Salida
+
+Para cada caso de prueba, imprime "YES" si Carlos puede llegar al plato de Koshary y "NO" en caso contrario.
+
+Puedes imprimir la respuesta usando cualquier combinación de mayúsculas y minúsculas (por ejemplo, "YES", "yes", "yEs" y "YeS" serán aceptadas).
+
+Ejemplo
+
+Entrada
+
+6
+1 1
+1 2
+4 6
+5 9
+7 2
+10 10
+
+Salida
+
+NO
+YES
+YES
+NO
+YES
+YES
+
+Nota
+
+En el primer caso de prueba, es imposible llegar a (1, 1) utilizando los pasos permitidos.
+
+En el segundo caso de prueba, una posible secuencia de movimientos es:
+
+(0,0) --paso largo--> (0,2) --paso corto--> (1,2)
+
+donde el primer movimiento es un paso largo y el segundo es un paso corto.
+
+En el tercer caso de prueba, una posible secuencia de movimientos es:
+
+(0,0) --paso largo--> (0,2) --paso largo--> (2,2) --paso largo--> (2,4) --paso largo--> (4,4) --paso largo--> (4,6)
+
+utilizando únicamente pasos largos.

@@ -1,0 +1,76 @@
+C. Pares Rojo-Negro
+
+Límite de tiempo por prueba: 2 segundos
+Límite de memoria por prueba: 512 megabytes
+
+Se tiene una tabla de 2 × n celdas. Cada celda de la tabla está coloreada de rojo o negro.
+
+Deseas repintar algunas celdas de esta tabla de manera que exista al menos una forma de dividir todas las celdas en n pares, cumpliendo las siguientes condiciones:
+
+* Las dos celdas de cada par tienen el mismo color.
+* Las dos celdas de cada par comparten un lado (es decir, son adyacentes horizontal o verticalmente).
+
+¿Cuál es el mínimo número de celdas que deben repintarse?
+
+Entrada
+
+Cada entrada contiene múltiples casos de prueba.
+
+La primera línea contiene un entero t (1 ≤ t ≤ 10⁴) — el número de casos de prueba.
+
+La descripción de los casos de prueba sigue a continuación.
+
+La primera línea de cada caso de prueba contiene un entero n (1 ≤ n ≤ 2 · 10⁵).
+
+La segunda y tercera línea de cada caso describen los colores de las celdas. Cada línea contiene una cadena formada por exactamente n letras 'R' y/o 'B':
+
+'R' representa una celda roja.
+'B' representa una celda negra.
+
+Restricción adicional
+
+* La suma de todos los valores de n en todos los casos de prueba no excede 2 · 10⁵.
+
+Salida
+
+Para cada caso de prueba, imprime un entero: el mínimo número de celdas que deben repintarse.
+
+Ejemplo
+
+Entrada
+5
+1
+R
+B
+2
+BR
+BR
+3
+RBR
+BRB
+4
+RRBB
+BBRB
+5
+RBRBR
+BBBRB
+
+Salida
+1
+0
+3
+1
+4
+
+Nota
+
+Considera el tercer ejemplo.
+
+Una posible solución es colorear todas las celdas con un mismo color, lo que requiere repintar 3 celdas.
+
+En el cuarto ejemplo, una posible recoloración válida es:
+
+RRBB
+BBRR
+
+Después de ello, es posible dividir todas las celdas en pares adyacentes del mismo color.
