@@ -1,0 +1,17 @@
+id: entrenamiento-upc-1
+
+name: "Entrenamiento UPC"
+
+short_name: "Entrenamiento 1"
+
+activate_time: "2026-06-19T10:00:00-04:00"
+
+start_time: "2026-06-19T10:30:00-04:00"
+
+duration: "1:00:00"
+
+scoreboard_freeze_duration: "0:15:00"
+
+penalty_time: 5
+
+deactivate_time: "2026-06-19T12:30:00-04:00"

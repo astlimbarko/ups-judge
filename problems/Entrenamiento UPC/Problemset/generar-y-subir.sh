@@ -4,7 +4,7 @@
 # Esto genera los ZIPs con rutas Linux (forward slash) y los sube al contest.
 
 API_URL="http://10.10.13.22/api/v4"
-CID="rally_1"
+CID="entrenamiento-upc-1"
 USER="admin"
 PASS="CTtxu9vA5Rh35h8-"
 
