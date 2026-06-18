@@ -1,0 +1,4 @@
+name: Reemplazar Caracter
+limits:
+  time_limit: 1
+  memory: 256

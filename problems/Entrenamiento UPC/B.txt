@@ -1,91 +1,46 @@
 B. Reemplazar Carácter
-
 Límite de tiempo por prueba: 1 segundo
 Límite de memoria por prueba: 256 megabytes
 
 Se te da una cadena s de longitud n, que consiste únicamente en letras minúsculas del alfabeto inglés.
-
 Debes realizar la siguiente operación exactamente una vez:
 
-* Elige dos índices i y j (1 ≤ i, j ≤ n). Puedes elegir i = j.
-* Asigna sᵢ := sⱼ.
+•	Elige dos índices i y j (1 ≤ i, j ≤ n). Puedes elegir i = j.
+•	Asigna sᵢ := sⱼ.
 
-Necesitas minimizar el número de permutaciones distintas* de s. Imprime cualquier cadena que tenga la menor cantidad posible de permutaciones distintas después de realizar exactamente una operación.
+Necesitas minimizar el número de permutaciones distintas* de s. Imprime la cadena lexicográficamente menor que tenga la menor cantidad posible de permutaciones distintas después de realizar exactamente una operación.
 
 * Una permutación de una cadena es una disposición de sus caracteres en cualquier orden. Por ejemplo, "bac" es una permutación de "abc", pero "bcc" no lo es.
 
 Entrada
-
-Cada prueba contiene varios casos de prueba.
-
-La primera línea contiene el número de casos de prueba t (1 ≤ t ≤ 500).
-
+Cada prueba contiene varios casos de prueba. 
+La primera línea contiene el número de casos de prueba t (1 ≤ t ≤ 500). 
 La descripción de los casos de prueba sigue a continuación.
-
 La primera línea de cada caso de prueba contiene un entero n (1 ≤ n ≤ 10) — la longitud de la cadena s.
-
 La segunda línea de cada caso de prueba contiene la cadena s de longitud n.
-
 La cadena contiene únicamente letras minúsculas del alfabeto inglés.
 
 Salida
-
-Para cada caso de prueba, imprime la cadena s requerida después de aplicar exactamente una operación.
-
-Si existen múltiples soluciones, imprime cualquiera de ellas.
-
+Para cada caso de prueba, imprime la cadena lexicográficamente menor que resulte de aplicar exactamente una operación y que tenga el mínimo número de permutaciones distintas.
 Ejemplo
-
-ENTRADA
-6
-3
-abc
-4
-xyyx
-8
-alphabet
-1
-k
-10
-aabbccddee
-6
-ttbddq
-
-SALIDA
-cbc
-yyyx
-alphaaet
-k
-eabbccddee
-tttddq
+ENTRADA	SALIDA
+6	cbc
+3	yyyx
+abc	alphaaet
+4	k
+xyyx	eabbccddee
+8	tttddq
+alphabet	
+1	
+k	
+10	
+aabbccddee	
+6	
+ttbddq	
 
 Nota
-
-En el primer caso de prueba, podemos obtener las siguientes cadenas con una operación:
-
-abc
-bbc
-cbc
-aac
-acc
-aba
-abb
-
-La cadena "abc" tiene 6 permutaciones distintas:
-
-abc
-acb
-bac
-bca
-cab
-cba
-
-La cadena "cbc" tiene 3 permutaciones:
-
-bcc
-cbc
-ccb
-
-que es la menor cantidad entre todas las cadenas que pueden obtenerse.
-
-De hecho, todas las cadenas obtenibles excepto "abc" tienen 3 permutaciones, por lo que cualquiera de ellas sería aceptada.
+En el primer caso de prueba, podemos obtener las siguientes cadenas con una operación: 
+abc, bbc, cbc, aac, acc, aba, abb.
+La cadena "abc" tiene 6 permutaciones distintas: abc, acb, bac, bca, cab, cba.
+La cadena "cbc" tiene 3 permutaciones: bcc, cbc, ccb que es la menor cantidad entre todas las cadenas que pueden obtenerse.
+De hecho, todas las cadenas obtenibles excepto "abc" tienen 3 permutaciones. La lexicográficamente menor de ellas es "aac".

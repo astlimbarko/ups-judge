@@ -1,0 +1,4 @@
+name: Pares Rojo-Negro
+limits:
+  time_limit: 2
+  memory: 512
