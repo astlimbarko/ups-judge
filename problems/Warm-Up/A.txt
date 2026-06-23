@@ -1,0 +1,34 @@
+A. El Oso y su Hermano Mayor
+Límite de tiempo por prueba: 1 segundo
+Límite de memoria por prueba: 256 megabytes
+El oso Limak quiere convertirse en el más grande de los osos, o al menos llegar a ser más grande que su hermano Bob.
+Actualmente, Limak pesa a y Bob pesa b. Se garantiza que el peso de Limak es menor o igual que el de su hermano.
+Limak come mucho y su peso se triplica cada año, mientras que el peso de Bob se duplica cada año.
+¿Después de cuántos años completos Limak llegará a ser estrictamente más grande (más pesado) que Bob?
+Entrada
+La única línea de entrada contiene dos números enteros a y b (1 ≤ a ≤ b ≤ 10), que representan el peso de Limak y el peso de Bob, respectivamente.
+
+Salida
+Imprima un único número entero que represente la cantidad de años después de los cuales Limak será estrictamente más pesado que Bob.
+
+Ejemplos
+Entrada
+4 7
+Salida
+2
+
+Entrada
+4 9
+Salida
+3
+
+Entrada
+1 1
+Salida
+1
+
+Nota
+En el primer ejemplo, inicialmente Limak pesa 4 y Bob pesa 7. Después de un año, sus pesos son 4 × 3 = 12 y 7 × 2 = 14, respectivamente. Limak todavía no es más pesado que Bob. Después del segundo año, los pesos son 36 y 28, por lo que el primero es mayor que el segundo. Limak se vuelve más pesado que Bob después de dos años, por lo que debe imprimir 2.
+En el segundo ejemplo, los pesos de Limak y Bob en los años siguientes son: 12 y 18, luego 36 y 36, y finalmente 108 y 72 (después de tres años). La respuesta es 3. Recuerde que Limak quiere ser más pesado que Bob y no estará satisfecho si tienen el mismo peso.
+En el tercer ejemplo, Limak se vuelve más pesado que Bob después del primer año. Sus pesos serán 3 y 2.
+

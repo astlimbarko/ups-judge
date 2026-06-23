@@ -1,0 +1,17 @@
+id: upc-2026
+
+name: "UPC 2026"
+
+short_name: "UPC 2026"
+
+activate_time: "2026-06-23T13:00:00-04:00"
+
+start_time: "2026-06-25T08:00:00-04:00"
+
+duration: "5:00:00"
+
+scoreboard_freeze_duration: "0:30:00"
+
+penalty_time: 20
+
+deactivate_time: "2026-06-25T14:00:00-04:00"

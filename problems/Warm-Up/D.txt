@@ -1,0 +1,37 @@
+D. Estacionamiento UTEPSA
+Límite de tiempo por caso: 1 segundo
+Límite de memoria: 256 megabytes
+
+Durante el JETS, los estudiantes van llegando en sus vehículos al estacionamiento principal.
+El estacionamiento cuenta con n sectores alineados. Los vehículos llegan uno tras otro y siempre se estacionan en uno de esos sectores.
+
+Si un sector está vacío, el vehículo ocupa la primera posición disponible. Si ya existen vehículos en ese sector, el nuevo vehículo se coloca encima de todos los que ya estaban estacionados en él.
+
+Cada vez que todos los n sectores tienen al menos un vehículo, la fila inferior completa abandona el estacionamiento:
+-	Se obtiene 1 punto por cada fila completa que sale.
+-	Todos los vehículos restantes descienden una posición.
+Tu tarea es determinar cuántos puntos se obtendrán al finalizar el proceso.
+
+Entrada
+La primera línea contiene dos enteros n y m (1 ≤ n, m ≤ 1000): 
+-	n: cantidad de sectores del estacionamiento. 
+-	m: cantidad de vehículos que llegarán. 
+La segunda línea contiene m enteros: c₁, c₂, ..., cₘ donde cᵢ (1 ≤ cᵢ ≤ n) indica el sector en el que se estacionará el i-ésimo vehículo.
+
+Salida
+Imprime un único entero: la cantidad total de puntos obtenidos.
+
+Entrada
+3 9
+1 1 2 2 2 3 1 2 3
+Salida
+2
+
+Nota
+En el ejemplo, después de la llegada del sexto vehículo, la cantidad de vehículos por sector será: [2, 3, 1]
+Como todos los sectores tienen al menos un vehículo, se retira una fila completa y queda: [1, 2, 0]
+Más adelante, después de la llegada del noveno vehículo, nuevamente se obtiene: [2, 3, 1]
+Se elimina otra fila completa y queda: [1, 2, 0]
+Por lo tanto, el número total de puntos obtenidos es: 2
+
+

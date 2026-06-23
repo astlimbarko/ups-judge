@@ -1,0 +1,4 @@
+name: La Palanca
+limits:
+  time_limit: 2
+  memory: 256

@@ -1,0 +1,17 @@
+id: warm-up-upc-2026
+
+name: "Warm-up - UPC 2026"
+
+short_name: "Warm-up UPC"
+
+activate_time: "2026-06-22T00:00:00-04:00"
+
+start_time: "2026-06-23T10:30:00-04:00"
+
+duration: "2:00:00"
+
+scoreboard_freeze_duration: "0:15:00"
+
+penalty_time: 10
+
+deactivate_time: "2026-06-23T14:00:00-04:00"

@@ -1,0 +1,69 @@
+- id: byteforce
+  username: byteforce
+  password: byteforce2026
+  type: team
+  team_id: "1"
+  name: ByteForce
+
+- id: recursivitis
+  username: recursivitis
+  password: recursivitis2026
+  type: team
+  team_id: "2"
+  name: Recursivitis
+
+- id: stackoverflow
+  username: stackoverflow
+  password: stackoverflow2026
+  type: team
+  team_id: "3"
+  name: StackOverflow
+
+- id: bufferosis
+  username: bufferosis
+  password: bufferosis2026
+  type: team
+  team_id: "4"
+  name: Bufferosis
+
+- id: compilax
+  username: compilax
+  password: compilax2026
+  type: team
+  team_id: "5"
+  name: Compilax
+
+- id: ctrl_c_ctrl_v
+  username: ctrl_c_ctrl_v
+  password: ctrl_c_ctrl_v2026
+  type: team
+  team_id: "6"
+  name: Ctrl+C Ctrl+V
+
+- id: cin_derecho
+  username: cin_derecho
+  password: cin_derecho2026
+  type: team
+  team_id: "7"
+  name: Cin derecho ++
+
+- id: sospechosos
+  username: sospechosos
+  password: sospechosos2026
+  type: team
+  team_id: "8"
+  name: SOSpechosos
+
+- id: javacetamol
+  username: javacetamol
+  password: javacetamol2026
+  type: team
+  team_id: "9"
+  name: Javacetamol
+
+- id: covbyte19
+  username: covbyte19
+  password: covbyte192026
+  type: team
+  team_id: "10"
+  name: CovByte19

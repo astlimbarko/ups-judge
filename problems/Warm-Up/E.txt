@@ -1,0 +1,46 @@
+E. Desafío UPC
+Límite de tiempo por caso: 1 segundo
+Límite de memoria: 256 megabytes
+
+Durante el concurso de programación UPC organizado en la UTEPSA, llegas al área de acreditación para participar en la competencia.
+
+Antes de permitirte ingresar, uno de los jueces decide poner a prueba tus habilidades y te plantea el siguiente desafío:
+
+Se te proporcionan tres números enteros a, b y x.
+Tu objetivo es hacer que a y b sean iguales. Para lograrlo, puedes realizar las siguientes operaciones:
+
+-	Elegir uno de los números a o b y sumarle 1.
+-	Elegir uno de los números a o b y dividirlo entre x, redondeando el resultado hacia abajo.
+
+Debes determinar el número mínimo de operaciones necesarias para que a y b sean iguales.
+
+¿Serás capaz de resolver el desafío y demostrar tus habilidades en el UPC?
+
+Entrada
+La primera línea contiene un entero t (1 ≤ t ≤ 10⁴), que representa la cantidad de casos de prueba.
+Cada uno de los siguientes t casos de prueba consiste en una línea que contiene tres enteros a, b y x. 
+(1 ≤ a, b ≤ 10⁹, 2 ≤ x ≤ 10⁹).
+
+Salida
+Para cada caso de prueba, imprime un único entero: el número mínimo de operaciones necesarias para hacer que a y b sean iguales.
+
+Ejemplo
+Entrada
+7
+1 2 3
+2 3 2
+7 3 10
+17 3 3
+10 10 2
+4 7 2
+1 6 2
+
+Salida
+1
+1
+2
+3
+0
+2
+2
+

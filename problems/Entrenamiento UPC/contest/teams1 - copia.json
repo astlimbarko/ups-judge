@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "name": "ByteForce",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "2",
+    "name": "Recursivitis",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "3",
+    "name": "StackOverflow",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "4",
+    "name": "Bufferosis",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "5",
+    "name": "Compilax",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "6",
+    "name": "Ctrl+C Ctrl+V",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "7",
+    "name": "Cin derecho ++",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "8",
+    "name": "SOSpechosos",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "9",
+    "name": "Javacetamol",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "10",
+    "name": "CovByte19",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  }
+]

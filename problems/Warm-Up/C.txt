@@ -1,0 +1,60 @@
+C. La Palanca
+Límite de tiempo por prueba: 2 segundos
+Límite de memoria por prueba: 256 megabytes
+
+En el Universo Divergente, La Palanca (The Lever) se ejecuta repetidamente sobre dos arreglos a y b de longitud n.
+En cada iteración, La Palanca realiza lo siguiente:
+1.	Elige un índice aleatorio i tal que ai > bi. Luego disminuye ai en 1. Si no existe tal índice i, este paso se ignora.
+2.	Elige un índice aleatorio i tal que ai < bi. Luego incrementa ai en 1. Si no existe tal índice i, este paso se ignora.
+Después de cada iteración, La Palanca verifica si el paso 1 fue ignorado. Si fue así, termina su ejecución.
+Se te proporcionan los dos arreglos.
+Encuentra el número de iteraciones que realiza La Palanca.
+Puede demostrarse que este número es fijo para todas las posibles elecciones aleatorias de índices que La Palanca puede realizar en cada paso.
+
+Entrada
+Cada prueba contiene múltiples casos de prueba.
+La primera línea contiene un entero t (1 ≤ t ≤ 10⁴) — el número de casos de prueba.
+La descripción de los casos de prueba sigue a continuación.
+La primera línea de cada caso de prueba contiene un entero n (1 ≤ n ≤ 10).
+La segunda línea de cada caso de prueba contiene n enteros: a₁, a₂, ..., aₙ (1 ≤ ai ≤ 10)
+La tercera línea de cada caso de prueba contiene n enteros: b₁, b₂, ..., bₙ (1 ≤ bi ≤ 10)
+
+Salida
+Para cada caso de prueba, imprime un entero: el número de iteraciones que realiza La Palanca.
+
+Ejemplo:
+
+Entrada
+4
+2
+7 3
+5 6
+3
+3 1 4
+3 1 4
+1
+10
+1
+6
+1 1 4 5 1 4
+1 9 1 9 8 1
+
+Salida
+3
+1
+10
+7
+
+Nota
+
+En el primer caso de ejemplo:
+
+En la primera iteración, La Palanca disminuye a₁ en 1 e incrementa a₂ en 1, y a se convierte en [6,4].
+
+En la segunda iteración, La Palanca disminuye a₁ en 1 e incrementa a₂ en 1, y a se convierte en [5,5].
+
+En la tercera iteración, La Palanca incrementa a₂ en 1, y a se convierte en [5,6].
+Como no logra disminuir ningún elemento, su ejecución termina. Por lo tanto, la respuesta es 3.
+
+En el segundo caso de ejemplo, La Palanca no hace nada en su primera iteración y, por lo tanto, realiza solamente una iteración.
+

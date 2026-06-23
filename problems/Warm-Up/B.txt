@@ -1,0 +1,48 @@
+B. 1-1
+límite de tiempo por prueba: 1 segundo
+límite de memoria por prueba: 256 megabytes
+
+ 
+
+Sea n un entero positivo. Mario tiene una cadena binaria∗ s de longitud n. En un movimiento, puede elegir cualquier posición i (2 ≤ i ≤ n−1) tal que esté entre dos 1, es decir, sᵢ₋₁ = sᵢ₊₁ = 1, y luego establecer sᵢ en 0 o 1.
+Mario puede realizar esta operación tantas veces como quiera (posiblemente cero). ¿Cuál es la cantidad mínima y máxima de 1's que pueden existir en la cadena resultante?
+∗Una cadena binaria es una cadena cuyos caracteres son únicamente 0 o 1.
+
+Entrada
+Cada prueba contiene múltiples casos de prueba. La primera línea contiene el número de casos de prueba t (1 ≤ t ≤ 500). La descripción de los casos de prueba sigue.
+La primera línea de cada caso de prueba contiene un entero n (3 ≤ n ≤ 100) — la longitud de la cadena.
+La segunda línea de cada caso de prueba contiene una cadena s de longitud n formada por caracteres 0 o 1.
+
+Salida
+Para cada caso de prueba, imprime dos enteros: la cantidad mínima y máxima de 1's que puede tener la cadena resultante después de realizar cierta cantidad de movimientos.
+
+Ejemplos:
+
+Entrada
+4
+3
+111
+6
+011011
+7
+1011101
+9
+100101101
+
+Salida
+2 3
+3 5
+4 7
+5 7
+
+Nota
+En el primer caso de prueba, la cantidad mínima de 1's que puede tener la cadena resultante es 2. 
+Esto se logra transformando la cadena de la siguiente manera: 111 → 101
+La cantidad máxima de 1's que puede tener la cadena resultante es 3, realizando cero movimientos.
+
+En el segundo caso de prueba, la cantidad mínima de 1's que puede tener la cadena resultante es 3. 
+Esto se logra transformando la cadena de la siguiente manera: 
+011011 → 011111 → 010111 → 010101
+La cantidad máxima de 1's que puede tener la cadena resultante es 5. 
+Esto se logra transformando la cadena de la siguiente manera: 011011 → 011111
+
