@@ -2,7 +2,7 @@
 # Script para GENERAR ZIPs y SUBIR problemas a DOMjudge
 # Ejecutar desde Ubuntu Server en la carpeta donde estan las carpetas A, B, C...
 
-API_URL="http://10.10.13.22/api/v4"
+API_URL="http://192.168.42.130/api/v4"
 CID="Warm-up_UPC"
 USER="admin"
 PASS="CTtxu9vA5Rh35h8-"
