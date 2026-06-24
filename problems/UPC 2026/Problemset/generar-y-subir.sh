@@ -31,7 +31,7 @@ echo ""
 
 # Generar ZIPs desde las carpetas de problemas (A, B, C, D, E)
 echo "--- Generando ZIPs ---"
-for dir in A B C D E; do
+for dir in A B C D E F G H I J K L; do
     if [ -d "$dir" ]; then
         rm -f "$ZIP_DIR/$dir.zip"
         cd "$dir"

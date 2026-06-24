@@ -1,0 +1,4 @@
+name: Atrapando al Krug
+limits:
+  time_limit: 1
+  memory: 1024
