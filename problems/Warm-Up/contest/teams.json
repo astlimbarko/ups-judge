@@ -7,19 +7,43 @@
   },
   {
     "id": "2",
-    "name": "Smith3",
+    "name": "SyntaxError",
     "group_ids": ["1"],
     "organization_id": "UTEPSA"
   },
   {
     "id": "3",
-    "name": "HeapOverFlow",
+    "name": "3 Smithsitos",
     "group_ids": ["1"],
     "organization_id": "UTEPSA"
   },
   {
     "id": "4",
+    "name": "MAF Coders",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "5",
+    "name": "Los Megamentes",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "6",
+    "name": "HeapOverFlow",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "7",
     "name": "ViniCorp",
+    "group_ids": ["1"],
+    "organization_id": "UTEPSA"
+  },
+  {
+    "id": "8",
+    "name": "Qubit",
     "group_ids": ["1"],
     "organization_id": "UTEPSA"
   }

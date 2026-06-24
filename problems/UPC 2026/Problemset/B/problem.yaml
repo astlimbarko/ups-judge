@@ -1,0 +1,4 @@
+name: Envío de Mensajes
+limits:
+  time_limit: 2
+  memory: 256

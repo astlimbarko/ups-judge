@@ -1,0 +1,61 @@
+B. Envío de Mensajes
+Límite de tiempo por caso: 2 segundos
+Límite de memoria: 256 megabytes
+
+Stepan es una persona muy ocupada. Hoy necesita enviar n mensajes en los instantes m₁, m₂, ..., mₙ (mᵢ < mᵢ₊₁).
+Desafortunadamente, en el instante 0, su teléfono solo tiene f unidades de batería restantes. Además, en el instante 0, el teléfono está encendido.
+El teléfono consume a unidades de batería por cada unidad de tiempo que permanece encendido. Asimismo, en cualquier momento, Stepan puede apagar el teléfono y volver a encenderlo más tarde. Cada vez que realiza esta operación, se consumen b unidades de batería.
+Considera que encender y apagar el teléfono son acciones instantáneas. Por lo tanto, es posible encender el teléfono en el instante x y enviar un mensaje en ese mismo instante, y también enviar un mensaje en el instante x y apagar el teléfono inmediatamente después.
+Si en algún momento el nivel de batería llega a 0 (es decir, se vuelve ≤ 0), será imposible enviar un mensaje en ese instante.
+Como todos los mensajes son muy importantes para Stepan, quiere saber si puede enviar todos los mensajes sin la posibilidad de recargar el teléfono.
+
+Entrada
+La primera línea contiene un único entero t (1 ≤ t ≤ 10⁴) — el número de casos de prueba.
+La descripción de cada caso de prueba sigue a continuación.
+La primera línea de cada caso de prueba contiene cuatro enteros n, f, a y b (1 ≤ n ≤ 2·10⁵, 1 ≤ f, a, b ≤ 10⁹) — el número de mensajes, la carga inicial del teléfono, el consumo de batería por unidad de tiempo y el consumo de batería al apagar y volver a encender el teléfono.
+La segunda línea contiene n enteros m₁, m₂, ..., mₙ (1 ≤ mᵢ ≤ 10⁹, mᵢ < mᵢ₊₁) — los instantes en los que deben enviarse los mensajes.
+Se garantiza que, para un mismo archivo de entrada, la suma de n sobre todos los casos de prueba no excede 2·10⁵.
+
+Salida
+Para cada caso de prueba, imprime "YES" si Stepan puede enviar todos los mensajes y "NO" en caso contrario.
+Puedes escribir cada letra en cualquier combinación de mayúsculas y minúsculas. Por ejemplo, las cadenas "yEs", "yes", "Yes" y "YES" serán aceptadas como respuestas afirmativas.
+
+Entrada
+6
+1 3 1 5
+3
+7 21 1 3
+4 6 10 13 17 20 26
+5 10 1 2
+1 2 3 4 5
+1 1000000000 1000000000 1000000000
+1000000000
+3 11 9 6
+6 8 10
+12 621526648 2585904 3566299
+51789 61859 71998 73401 247675 298086 606959 663464 735972 806043 806459 919683
+
+Salida
+NO
+YES
+YES
+NO
+NO
+YES
+
+ 
+Nota
+En el primer caso de prueba del ejemplo, en el instante 0 la batería del teléfono es 3. Si intenta enviar el mensaje en el instante 3 sin apagar el teléfono, se consumirán (3−0)·1 = 3 unidades de batería. En ese caso, la batería llegará a 0 y Stepan no podrá enviar el mensaje. Si apaga y vuelve a encender el teléfono, la batería disminuirá en 5 unidades, por lo que tampoco será posible enviar el mensaje de esa manera.
+En el tercer caso de prueba del ejemplo, en el instante 0 la batería es 10. El teléfono consume 1 unidad de batería por cada unidad de tiempo que permanece encendido y 2 unidades al apagarlo y volverlo a encender. Para enviar todos los mensajes, puede realizar las siguientes acciones:
+•	Apagar el teléfono en el instante 0 y encenderlo en el instante 1, tras lo cual quedarán 10−2=8 unidades de batería. 
+•	Enviar un mensaje en el instante 1. 
+•	Enviar un mensaje en el instante 2, tras lo cual quedarán 8−(2−1)·1=7 unidades de batería. 
+•	Apagar el teléfono en el instante 2 y encenderlo en el instante 3, tras lo cual quedarán 7−2=5 unidades de batería. 
+•	Enviar un mensaje en el instante 3. 
+•	Apagar el teléfono en el instante 3 y encenderlo en el instante 4, tras lo cual quedarán 5−2=3 unidades de batería. 
+•	Enviar un mensaje en el instante 4. 
+•	Apagar el teléfono en el instante 4 y encenderlo en el instante 5, tras lo cual quedarán 3−2=1 unidad de batería. 
+•	Enviar un mensaje en el instante 5. 
+El sexto caso de prueba del ejemplo puede fallar si tu solución produce un desbordamiento de enteros (integer overflow).
+
+

@@ -1,0 +1,4 @@
+name: El Zorro y Dos Puntos
+limits:
+  time_limit: 2
+  memory: 256

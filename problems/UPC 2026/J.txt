@@ -1,0 +1,74 @@
+J. El Zorro y Dos Puntos
+Límite de tiempo por caso: 2 segundos
+Límite de memoria por caso: 256 megabytes
+
+La zorra Ciel está jugando un juego de rompecabezas para móviles llamado "Two Dots". Los niveles básicos se juegan en un tablero de tamaño n × m celdas, como se muestra a continuación:
+ 
+
+Cada celda contiene un punto de algún color. Utilizaremos diferentes letras latinas mayúsculas para representar diferentes colores.
+
+La clave de este juego es encontrar un ciclo formado por puntos del mismo color. Considera como ejemplo los 4 puntos azules de la imagen que forman un círculo. Formalmente, llamamos ciclo a una secuencia de puntos d₁, d₂, ..., dₖ si y solo si cumple las siguientes condiciones:
+Estos k puntos son distintos: si i ≠ j, entonces dᵢ es diferente de dⱼ. 
+k es al menos 4. 
+
+Todos los puntos pertenecen al mismo color. 
+Para todo 1 ≤ i ≤ k − 1, los puntos dᵢ y dᵢ₊₁ son adyacentes. Además, dₖ y d₁ también deben ser adyacentes. Dos celdas x e y se consideran adyacentes si comparten un lado. 
+Determina si existe un ciclo en el tablero.
+
+Entrada
+La primera línea contiene dos enteros n y m (2 ≤ n, m ≤ 50) — el número de filas y columnas del tablero.
+Las siguientes n líneas contienen una cadena de m caracteres cada una, representando los colores de los puntos en cada fila. Cada carácter es una letra latina mayúscula.
+
+Salida
+Imprime "Yes" si existe un ciclo, y "No" en caso contrario.
+
+Ejemplo
+Entrada
+3 4
+AAAA
+ABCA
+AAAA
+Salida
+Yes
+	
+Entrada
+3 4
+AAAA
+ABCA
+AADA
+Salida
+No
+
+Entrada
+4 4
+YYYR
+BYBY
+BBBY
+BBBY
+Salida
+Yes
+
+Entrada
+7 6
+AAAAAB
+ABBBAB
+ABAAAB
+ABABBB
+ABAAAB
+ABBBAB
+AAAAAB
+Salida
+Yes
+
+Entrada
+2 13
+ABCDEFGHIJKLM
+NOPQRSTUVWXYZ
+Salida
+No
+
+Nota
+En el primer ejemplo, todas las celdas con la letra 'A' forman un ciclo.
+En el segundo ejemplo, no existe ningún ciclo de este tipo.
+El tercer ejemplo se muestra en la imagen anterior ('Y' = Amarillo, 'B' = Azul, 'R' = Rojo).
+

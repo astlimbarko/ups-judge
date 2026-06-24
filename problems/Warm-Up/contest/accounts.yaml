@@ -5,23 +5,51 @@
   team_id: "1"
   name: Utepsianos
 
-- id: smith3
-  username: smith3
-  password: smith32026
+- id: syntaxerror
+  username: syntaxerror
+  password: syntaxerror2026
   type: team
   team_id: "2"
-  name: Smith3
+  name: SyntaxError
+
+- id: smithsitos3
+  username: smithsitos3
+  password: smithsitos32026
+  type: team
+  team_id: "3"
+  name: 3 Smithsitos
+
+- id: mafcoders
+  username: mafcoders
+  password: mafcoders2026
+  type: team
+  team_id: "4"
+  name: MAF Coders
+
+- id: losmegamentes
+  username: losmegamentes
+  password: losmegamentes2026
+  type: team
+  team_id: "5"
+  name: Los Megamentes
 
 - id: heapoverflow
   username: heapoverflow
   password: heapoverflow2026
   type: team
-  team_id: "3"
+  team_id: "6"
   name: HeapOverFlow
 
 - id: vinicorp
   username: vinicorp
   password: vinicorp2026
   type: team
-  team_id: "4"
+  team_id: "7"
   name: ViniCorp
+
+- id: qubit
+  username: qubit
+  password: qubit2026
+  type: team
+  team_id: "8"
+  name: Qubit

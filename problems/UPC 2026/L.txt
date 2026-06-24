@@ -1,0 +1,70 @@
+L. Atrapando al Krug
+Límite de tiempo por caso: 1 segundo
+Límite de memoria por caso: 1024 megabytes
+
+Doran y el Krug están jugando un juego en una cuadrícula que consiste en (n+1) × (n+1) celdas, cuyas coordenadas son pares de enteros desde 0 hasta n, inclusive.
+El objetivo del Krug es no ser atrapado por Doran durante el mayor tiempo posible, mientras que el objetivo de Doran es atrapar al Krug lo antes posible. Decimos que Doran atrapó al Krug si ambos se encuentran en la misma celda de la cuadrícula.
+Para jugar el juego, el Krug y Doran se turnan alternativamente, comenzando primero el Krug:
+El Krug puede quedarse en la misma celda o moverse a una celda adyacente vertical u horizontalmente (pero no en diagonal). Formalmente, si el Krug se encuentra actualmente en la celda (a,b), puede quedarse en (a,b) o moverse a alguna de las siguientes celdas: (a−1,b), (a,b−1), (a,b+1), (a+1,b)
+Doran puede quedarse en la misma celda o moverse a una celda adyacente vertical, horizontal o diagonalmente. Formalmente, si Doran se encuentra actualmente en la celda (c,d), puede quedarse en (c,d) o moverse a alguna de las siguientes celdas: (c−1,d−1), (c−1,d), (c−1,d+1), (c,d−1), (c,d+1), (c+1,d−1), (c+1,d), (c+1,d+1)
+Ninguno de los jugadores puede salir fuera de los límites de la cuadrícula.
+
+ 
+
+Las figuras muestran los movimientos posibles del Krug y Doran. Las letras K y D representan las posiciones actuales del Krug y Doran, mientras que las celdas coloreadas representan las posiciones posibles a las que cada jugador puede moverse durante su respectivo turno.
+El tiempo de supervivencia del Krug se define como el número de turnos de Doran hasta que Doran atrapa al Krug, considerando las celdas iniciales dadas para ambos jugadores.
+Suponiendo que ambos jugadores juegan de manera óptima, encuentra el tiempo de supervivencia del Krug o informa si el Krug puede sobrevivir durante un número infinito de turnos.
+
+Entrada
+Cada prueba contiene múltiples casos de prueba.
+La primera línea contiene el número de casos de prueba t: 1 ≤ t ≤ 10⁴
+La descripción de los casos de prueba sigue.
+Cada caso de prueba consiste en una única línea que contiene cinco enteros: n, rK, cK, rD, cD
+con las siguientes restricciones: 1 ≤ n ≤ 10⁹ 0 ≤ rK, cK, rD, cD ≤ n (rK, cK) ≠ (rD, cD) donde: n es el tamaño de la cuadrícula.
+(rK, cK) representa la celda inicial del Krug.
+(rD, cD) representa la celda inicial de Doran.
+
+Salida
+Para cada caso de prueba, imprime el tiempo de supervivencia del Krug cuando ambos jugadores juegan de manera óptima.
+Si el Krug puede sobrevivir durante infinitos turnos, imprime: -1
+
+Ejemplo
+Entrada
+7
+2 0 0 1 1
+3 1 1 0 1
+1 1 0 0 1
+6 1 3 3 2
+9 4 1 4 2
+82 64 2 63 2
+1000000000 500000000 500000000 1000000000 0
+Salida
+1
+3
+1
+4
+2
+19
+
+Nota
+Explicación del primer caso de prueba
+El Krug comienza en (0,0) y Doran comienza en (1,1).
+En su turno, el Krug solamente puede moverse a: (0,0), (0,1), (1,0)
+Doran, comenzando desde (1,1), puede alcanzar cualquier celda de la cuadrícula 3 × 3 en un solo movimiento.
+Por lo tanto, sin importar dónde se mueva el Krug, Doran siempre podrá moverse hasta su celda en su primer turno.
+El tiempo de supervivencia del Krug es: 1
+ 
+
+Explicación del segundo caso de prueba
+El Krug comienza en (1,1) y Doran en (0,1).
+Para sobrevivir al primer turno de Doran, el Krug debe moverse a una celda que Doran no pueda alcanzar.
+La única celda posible es: (2,1)
+Después de que el Krug se mueve a (2,1), Doran se mueve a (1,1) para acercarse.
+Ahora, en su segundo movimiento, el Krug nuevamente debe moverse a una celda que Doran no pueda alcanzar, que es:
+(3,1)
+Luego Doran se mueve a (2,1).
+En este punto, sin importar a qué celda se mueva el Krug en su tercer turno, Doran siempre podrá alcanzarla.
+Se puede demostrar que esta es una estrategia óptima para ambos jugadores y, por lo tanto, el tiempo de supervivencia del Krug es 3.
+
+ 
+

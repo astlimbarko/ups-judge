@@ -1,0 +1,44 @@
+G. Minimizar la Distancia
+Límite de tiempo por caso: 1 segundo
+Límite de memoria por caso: 256 megabytes
+
+Hay un total de n depósitos ubicados sobre una recta numérica. El depósito i se encuentra en la posición xᵢ para 1 ≤ i ≤ n.
+Eres un vendedor con n bolsas de mercancía e intentas entregar una bolsa a cada uno de los n depósitos. Tanto tú como las n bolsas se encuentran inicialmente en el origen 0.
+Puedes transportar como máximo k bolsas a la vez. Debes recoger en el origen la cantidad necesaria de mercancía, entregarla en los depósitos correspondientes y luego regresar al origen para recoger el siguiente lote de mercancía.
+Calcula la distancia mínima que necesitas recorrer para entregar todas las bolsas de mercancía a los depósitos. No es necesario regresar al origen después de haber entregado todas las bolsas.
+
+Entrada
+Cada entrada contiene múltiples casos de prueba.
+La primera línea contiene el número de casos de prueba t (1 ≤ t ≤ 10500).
+La descripción de los casos de prueba sigue a continuación.
+La primera línea de cada caso de prueba contiene dos enteros n y k (1 ≤ k ≤ n ≤ 2·10⁵).
+La segunda línea de cada caso de prueba contiene n enteros x₁, x₂, …, xₙ (−10⁹ ≤ xᵢ ≤ 10⁹). Es posible que varios depósitos compartan la misma posición.
+Se garantiza que la suma de n sobre todos los casos de prueba no excede 2·10⁵.
+
+Salida
+Para cada caso de prueba, imprime un único entero que represente la distancia mínima que necesitas recorrer para entregar todas las bolsas de mercancía a los depósitos.
+
+Ejemplo
+Entrada
+4
+5 1
+1 2 3 4 5
+9 3
+-5 -10 -15 6 5 8 3 7 4
+5 3
+2 2 3 3 3
+4 2
+1000000000 1000000000 1000000000 1000000000
+Salida
+25
+41
+7
+3000000000
+
+Nota
+En el primer caso de prueba, solo puedes transportar una bolsa a la vez. Por lo tanto, la siguiente es una secuencia de movimientos que produce una distancia mínima recorrida: 0→2→0→4→0→3→0→1→0→5 donde cada 0 indica que regresas al origen para recoger una bolsa, y cada entero positivo indica que entregas la bolsa en un depósito ubicado en esa coordenada, para una distancia total de 25 unidades.
+Debe señalarse que existen otras secuencias que producen la misma distancia.
+
+En el segundo caso de prueba, puedes seguir la siguiente secuencia, entre varias posibles, para recorrer la distancia mínima: 0→6→8→7→0→5→4→3→0→(−5)→(−10)→(−15), con una distancia de 41.
+Puede demostrarse que 41 es la distancia óptima para este caso de prueba.
+

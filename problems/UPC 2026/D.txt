@@ -1,0 +1,67 @@
+D. Dedos de Tortuga: Contar los Valores de k
+Límite de tiempo por caso: 5 segundos
+Límite de memoria por caso: 256 megabytes
+
+Se te proporcionan tres enteros positivos a, b y l (a, b, l > 0).
+Puede demostrarse que siempre existe una forma de elegir enteros no negativos (es decir, ≥ 0) k, x e y tales que:
+l = k · aˣ · bʸ
+Tu tarea es determinar la cantidad de valores distintos posibles de k considerando todas las formas válidas de elegir dichos valores.
+
+Entrada
+La primera línea contiene un entero t (1 ≤ t ≤ 10⁴) — el número de casos de prueba.
+Las siguientes t líneas contienen tres enteros a, b y l (2 ≤ a, b ≤ 100, 1 ≤ l ≤ 10⁶) — la descripción de un caso de prueba.
+
+Salida
+Imprime t líneas. La i-ésima línea (1 ≤ i ≤ t) debe contener un entero: la respuesta para el i-ésimo caso de prueba.
+
+Ejemplo
+Entrada
+11
+2 5 20
+2 5 21
+4 6 48
+2 3 72
+3 5 75
+2 2 1024
+3 7 83349
+100 100 1000000
+7 3 2
+2 6 6
+17 3 632043
+
+Salida
+6
+1
+5
+12
+6
+11
+24
+4
+1
+3
+24
+
+
+Nota
+En el primer caso de prueba, a = 2, b = 5, l = 20.
+Los posibles valores de k (y los correspondientes valores de x e y) son los siguientes:
+•	Elegir k = 1, x = 2, y = 1. Entonces: k · aˣ · bʸ = 1 · 2² · 5¹ = 20 = l
+•	Elegir k = 2, x = 1, y = 1. Entonces: k · aˣ · bʸ = 2 · 2¹ · 5¹ = 20 = l
+•	Elegir k = 4, x = 0, y = 1. Entonces: k · aˣ · bʸ = 4 · 2⁰ · 5¹ = 20 = l
+•	Elegir k = 5, x = 2, y = 0. Entonces: k · aˣ · bʸ = 5 · 2² · 5⁰ = 20 = l
+•	Elegir k = 10, x = 1, y = 0. Entonces: k · aˣ · bʸ = 10 · 2¹ · 5⁰ = 20 = l
+•	Elegir k = 20, x = 0, y = 0. Entonces: k · aˣ · bʸ = 20 · 2⁰ · 5⁰ = 20 = l
+ 
+•	
+En el segundo caso de prueba, a = 2, b = 5, l = 21.
+Observa que l = 21 no es divisible ni por a = 2 ni por b = 5. Por lo tanto, únicamente podemos tomar x = 0 e y = 0, lo que corresponde a k = 21.
+
+En el tercer caso de prueba, a = 4, b = 6, l = 48.
+Los posibles valores de k (y los correspondientes valores de x e y) son los siguientes:
+•	Elegir k = 2, x = 1, y = 1. Entonces: k · aˣ · bʸ = 2 · 4¹ · 6¹ = 48 = l
+•	Elegir k = 3, x = 2, y = 0. Entonces: k · aˣ · bʸ = 3 · 4² · 6⁰ = 48 = l
+•	Elegir k = 8, x = 0, y = 1. Entonces: k · aˣ · bʸ = 8 · 4⁰ · 6¹ = 48 = l
+•	Elegir k = 12, x = 1, y = 0. Entonces: k · aˣ · bʸ = 12 · 4¹ · 6⁰ = 48 = l
+•	Elegir k = 48, x = 0, y = 0. Entonces: k · aˣ · bʸ = 48 · 4⁰ · 6⁰ = 48 = l
+

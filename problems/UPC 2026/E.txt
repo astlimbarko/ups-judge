@@ -1,0 +1,28 @@
+E. Dígitos
+Límite de tiempo por caso: 1 segundos
+Límite de memoria por caso: 256 megabytes
+
+Artem escribió el dígito d en la pizarra exactamente n! veces seguidas. Es decir, obtuvo el número dddddd…ddd (con exactamente n! dígitos).
+
+Ahora tiene curiosidad por saber qué dígitos impares del 1 al 9 dividen al número escrito en la pizarra.
+Entrada
+La primera línea contiene un entero t (1 ≤ t ≤ 100) — el número de casos de prueba. Luego siguen los t casos.
+Cada caso de prueba consiste en una sola línea con dos enteros n y d (2 ≤ n ≤ 10⁹, 1 ≤ d ≤ 9).
+Salida
+Para cada caso de prueba, imprime en orden ascendente los dígitos impares que dividen al número escrito en la pizarra.
+Ejemplo
+Entrada
+3
+2 6
+7 1
+8 5
+
+Salida
+1 3 
+1 3 7 9 
+1 3 5 7 9 
+
+Nota
+El factorial de un entero positivo n (es decir, n!) es el producto de todos los enteros desde 1 hasta n.
+Por ejemplo, el factorial de 5 es: 1 ⋅ 2 ⋅ 3 ⋅ 4 ⋅ 5 = 120
+

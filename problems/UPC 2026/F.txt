@@ -1,0 +1,42 @@
+F. Odio a la "A"
+Límite de tiempo por caso: 1 segundo
+Límite de memoria por caso: 256 megabytes
+Bob tiene una cadena s formada por letras minúsculas del alfabeto inglés. Él define s′ como la cadena que se obtiene al eliminar todos los caracteres 'a' de s (manteniendo el mismo orden de todos los demás caracteres). Luego genera una nueva cadena t concatenando s y s′. En otras palabras: t = s + s′ (consulta las notas para ver un ejemplo).
+Se te proporciona la cadena t. Tu tarea es encontrar alguna cadena s que Bob podría haber utilizado para generar t. 
+Puede demostrarse que, si existe una respuesta, esta será única.
+Entrada
+La única línea de la entrada contiene una cadena t (1 ≤ |t| ≤ 10⁵) formada por letras minúsculas del alfabeto inglés.
+
+Salida
+Imprime una cadena s que podría haber generado t.
+Puede demostrarse que, si existe una respuesta, esta será única.
+Si no existe ninguna cadena válida, imprime: “:(“ (sin comillas y sin espacios entre los caracteres).
+
+Ejemplo
+Entrada
+aaaaa
+Salida
+aaaaa
+
+Entrada
+aacaababc
+Salida
+:(
+
+Entrada
+ababacacbbcc
+Salida
+ababacac
+
+Entrada
+baba
+Salida
+:(
+
+
+Nota
+En el primer ejemplo, tenemos s = "aaaaa" y s′ = "".
+En el segundo ejemplo, no existe ninguna cadena s que pueda generar la cadena t dada.
+En el tercer ejemplo, tenemos s = "ababacac", s′ = "bbcc", y t = s + s′ = "ababacacbbcc".
+
+

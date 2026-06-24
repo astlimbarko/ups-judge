@@ -1,0 +1,4 @@
+name: Minimizar la Distancia
+limits:
+  time_limit: 1
+  memory: 256

@@ -1,0 +1,44 @@
+C. La Pintura de la Pequeña Hada
+Límite de tiempo por caso: 1 segundo
+Límite de memoria por caso: 256 megabytes
+La pequeña hada tiene una cinta con 10¹⁸ celdas y una variedad infinita de colores. Las primeras n celdas de la cinta ya han sido coloreadas, donde la i-ésima celda tiene el color aᵢ.
+La pequeña hada coloreará las celdas restantes en orden, desde la celda n+1 hasta la celda 10¹⁸. Para la i-ésima celda:
+•	Primero, la pequeña hada cuenta la cantidad de colores distintos presentes actualmente en la cinta, denotada por cᵢ. 
+•	Luego, colorea la i-ésima celda con el color cᵢ. 
+¿Qué color utilizará el hada para la celda número 10¹⁸?
+Entrada
+Cada entrada contiene múltiples casos de prueba. La primera línea contiene un entero t (1 ≤ t ≤ 500) — el número de casos de prueba.
+La descripción de los casos de prueba sigue a continuación.
+La primera línea de cada caso de prueba contiene un único entero n (1 ≤ n ≤ 100) — el número de celdas coloreadas.
+La segunda línea contiene n enteros a₁, a₂, ..., aₙ (1 ≤ aᵢ ≤ 10³) — los colores de las celdas.
+
+Salida
+Para cada caso de prueba, imprime el color de la última celda.
+
+Ejemplo
+Entrada
+5
+6
+1 1 1 1 1 1
+1
+1000
+5
+8 10 15 20 25
+8
+2 5 2 4 1 2 5 3
+6
+40 4 1 95 8 40
+
+Salida
+1
+1000
+8
+5
+8
+
+
+Nota
+En el primer ejemplo, en todo momento existe un único color distinto en la cinta, por lo que el hada siempre elige el color 1.
+
+En el segundo ejemplo, el hada coloreará las siguientes 1000 celdas con los colores del 1 al 1000 de manera secuencial. Después de eso, todas las celdas restantes serán coloreadas con el color 1000.
+

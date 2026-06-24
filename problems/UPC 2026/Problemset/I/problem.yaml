@@ -1,0 +1,4 @@
+name: Dejándose llevar por la corriente
+limits:
+  time_limit: 2
+  memory: 512

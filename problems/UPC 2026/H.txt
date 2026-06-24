@@ -1,0 +1,42 @@
+H. El Jardín de Basil
+Límite de tiempo por caso: 1 segundo
+Límite de memoria por caso: 256 megabytes
+
+Hay n flores en una fila. Inicialmente, la i-ésima flor tiene una altura positiva de hᵢ metros.
+Cada segundo, el viento soplará desde la izquierda, provocando que la altura de algunas flores disminuya.
+Específicamente, cada segundo, para cada i desde 1 hasta n, en ese orden, ocurre lo siguiente:
+Si i = n o hᵢ > hᵢ₊₁, entonces el valor de hᵢ cambia a max(0, hᵢ − 1). 
+¿Cuántos segundos pasarán antes de que hᵢ = 0 para todas las flores 1 ≤ i ≤ n por primera vez?
+
+Entrada
+Cada entrada contiene múltiples casos de prueba.
+La primera línea de la entrada contiene un único entero t (1 ≤ t ≤ 10⁴) — el número de casos de prueba. A continuación, se describe cada caso de prueba.
+La primera línea de cada caso de prueba contiene un único entero n (1 ≤ n ≤ 10⁵) — el número de flores.
+La segunda línea de cada caso de prueba contiene n enteros h₁, h₂, …, hₙ (1 ≤ hᵢ ≤ 10⁹) — las alturas de las flores.
+Se garantiza que la suma de n sobre todos los casos de prueba no excede 10⁵.
+
+Salida
+Para cada caso de prueba, imprime un único entero — la cantidad de segundos que pasarán antes de que hᵢ = 0 para todas las flores 1 ≤ i ≤ n.
+
+Ejemplo
+Entrada
+4
+3
+1 1 2
+2
+3 1
+1
+9
+5
+7 4 4 3 2
+Salida
+4
+3
+9
+7
+
+Nota
+En el primer caso de prueba, las alturas de las flores cambian de la siguiente manera: [1,1,2]→[1,1,1]→[1,1,0]→[1,0,0]→[0,0,0]
+En el segundo caso de prueba, las alturas de las flores cambian de la siguiente manera: [3,1]→[2,0]→[1,0]→[0,0]
+
+

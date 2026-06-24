@@ -1,12 +1,12 @@
-A. Saúl Ama las Tablas Hash
+A. El profesor Bit Ama las Tablas Hash
 Límite de tiempo por prueba: 1 segundo
 Límite de memoria por prueba: 256 megabytes
 
-Saúl tiene una tabla hash con p casillas, numeradas desde 0 hasta p − 1. Quiere insertar n números en la tabla hash, en el mismo orden en que son proporcionados.
-Para el i-ésimo número xᵢ, Saúl intentará colocarlo en la casilla con número h(xᵢ), donde h(x) es la función hash. En este problema se asume que: 
+El profesor Bit tiene una tabla hash con p casillas, numeradas desde 0 hasta p − 1. Quiere insertar n números en la tabla hash, en el mismo orden en que son proporcionados.
+Para el i-ésimo número xᵢ, el profesor Bit intentará colocarlo en la casilla con número h(xᵢ), donde h(x) es la función hash. En este problema se asume que: 
 h(x) = x mod p
 La operación a mod b representa el residuo de la división de a entre b.
-Sin embargo, cada casilla puede contener como máximo un elemento. Si Saúl intenta insertar un número en una casilla que ya está ocupada, diremos que ocurre un conflicto.
+Sin embargo, cada casilla puede contener como máximo un elemento. Si el profesor Bit intenta insertar un número en una casilla que ya está ocupada, diremos que ocurre un conflicto.
 Supongamos que el primer conflicto ocurre inmediatamente después de la i-ésima inserción. Debes imprimir el valor de i. Si no ocurre ningún conflicto, simplemente imprime −1.
 Entrada
 La primera línea contiene dos enteros p y n (2 ≤ p, n ≤ 300).
