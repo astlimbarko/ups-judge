@@ -1,4 +1,4 @@
-name: Dedos de Tortuga: Contar los Valores de k
+name: "Dedos de Tortuga: Contar los Valores de k"
 limits:
   time_limit: 5
   memory: 256
